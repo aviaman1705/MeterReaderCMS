@@ -1,0 +1,80 @@
+﻿@model MeterReaderCMS.Models.ViewModels.UserProfileVM
+@{
+    ViewBag.Title = "הפרופיל שלי";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 title-section">
+        <h2 class="main-page-title">@ViewBag.Title</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        @using (Html.BeginForm("user-profile", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-horizontal">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control form-input" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control form-input" })
+                        @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 form-buttons-section text-right">
+                        @*@Html.ActionLink("חזרה לרשימה", "Index", null, new { @class = "btn btn-info" })*@
+                        <input type="submit" value="עריכת פרופיל" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

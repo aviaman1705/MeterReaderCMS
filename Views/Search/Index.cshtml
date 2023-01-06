@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MeterReaderCMS.Models.ViewModels.SearchItemVM>
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="card mb-3">
+            <div class="card-header text-right">
+                <i class="fa fa-table"></i>
+                תוצאות חיפוש
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="theader">
+                            <tr class="tr-header">
+                                <th class="th-header">פריט</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody">
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <a href='@Html.DisplayFor(modelItem => item.Link)'>@item.Item</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <p id="called-sum-text"></p>
+                <p id="uncalled-sum-text"></p>
+            </div>
+        </div>
+    </div>
+</div>

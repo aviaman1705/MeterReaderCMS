@@ -1,0 +1,159 @@
+﻿
+@using System.Configuration;
+
+@{
+    ViewBag.Title = "רשימת מסלולים";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var domain = ConfigurationManager.AppSettings["Domain"];
+}
+
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 title-section">
+        <h2 class="main-page-title">@ViewBag.Title</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 buttons-section text-right">
+        @Html.ActionLink("הוספת מסלול", "AddTrack", null, new { @class = "btn btn-info" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="card mb-3">
+            <div class="card-header text-right">
+                רשימת מסלולים
+                <i class="fa fa-table"></i>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="theader">
+                            <tr class="tr-header">
+                                <th class="th-header">מחיקה</th>
+                                <th class="th-header">עריכה</th>
+                                <th class="th-header">רחוב</th>
+                                <th class="th-header">לא נקרא</th>
+                                <th class="th-header">נקרא</th>
+                                <th class="th-header">פנקס</th>
+                                <th class="th-header">תאריך </th>
+                                <th class="th-header">מזהה ייחודי </th>
+                            </tr>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <p id="called-sum-text"></p>
+                <p id="uncalled-sum-text"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(function () {
+
+            var text = "האם אתה בטוח שברצונך למחוק את הפריט ?";
+
+            $('#called-sum-text').text('');
+            $('#uncalled-sum-text').text('');
+
+            $("#dataTable")
+                .on('init.dt', function (a, b, c) {
+                    //console.log('Table initialisation complete: ' + new Date().getTime());
+                    //$('#called-sum-text').text(`.${Math.floor(c.Called)} סקלות שנקראו`);
+                    //$('#uncalled-sum-text').text(`.${Math.floor(c.UnCalled * 0.3)} סקלות שלא נקראו`);
+                })
+                .dataTable({
+                "autoWidth": false,
+                "bServerSide": true, //make server side processing to true
+                "sAjaxSource": '@domain' + "api/Tracks/GetData", //url of the Ajax source,i.e. web api method
+                "sAjaxDataProp": "aaData", // data property of the returned ajax which contains table data
+                "bProcessing": true,
+                "bLengthChange": false,
+                "order": [[6, 'desc']],
+                "format": 'YYYY/MM/DD',
+                "sPaginationType": "full_numbers",//pagination type
+                "aoColumnDefs": [
+                    { 'bSortable': false, "width": "10%", 'aTargets': [0] },
+                    { 'bSortable': false, "width": "10%", 'aTargets': [1] },
+                    { 'bSortable': true, "width": "30%", 'aTargets': [2] },
+                    { 'bSortable': true, "width": "10%", 'aTargets': [3] },
+                    { 'bSortable': true, "width": "10%", 'aTargets': [4] },
+                     { 'bSortable': true, "width": "10%", 'aTargets': [5] },
+                    { 'bSortable': true, "width": "10%", 'aTargets': [6] },
+                    { 'bSortable': true, "width": "10%", 'aTargets': [7] },
+                ],
+                "aoColumns": [
+                    {
+                        mData: '',
+                        render: (data, type, row) => {
+                            return `<a
+                                href='../Admin/Tracks/DeleteTrack/${row.Id}'
+                                title="מחיקה"
+                                class="btn btn-sm btn-default"
+                                onclick='return confirm("${text}")'>
+                                <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
+                            </a>`;
+                        }
+                    },
+                    {
+                        mData: '',
+                        render: (data, type, row) => {
+                            return `<a
+                                href='../Admin/Tracks/EditTrack/${row.Id}'
+                                title="עריכה"
+                                class="btn btn-sm btn-default">
+                               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                              </a>`;
+                        }
+                    },
+                    { "mData": "StreetName" },
+                    { "mData": "UnCalled" },
+                    { "mData": "Called" },
+                    { "mData": "NoteBookNumber" },
+                    {
+                        "data": "Date",
+                        "render": function (data, type, row) {
+
+                            var today = new Date();
+                            var boulderDate = new Date(row.Date);
+                            var boulderYear = boulderDate.getFullYear().toString().substr(-2);
+                            var boulderMonth = boulderDate.getMonth() + 1;
+                            var boulderDay = boulderDate.getDate();
+                            return (boulderDate.toString().length > 1 ? boulderDay : "0" + boulderDay) + "/" + (boulderMonth.toString().length > 1 ? boulderMonth : "0" + boulderMonth) + "/" + boulderYear;
+                        }
+                    },
+                    { "mData": "Id" }
+                ],
+                "language": {
+                    "sSearch": "חפש",
+                    "lengthMenu": "Display _MENU_ records per page",
+                    "zeroRecords": "מצטערים אין תוצאות",
+                    "info": "מציג עמוד _PAGE_ מתוך _PAGES_",
+                    "infoEmpty": "No records available",
+                    "infoFiltered": "(filtered from _MAX_ total records)",
+                    "processing": "טוען",
+                    "paginate": {
+                        "previous": "הקודם",
+                        "next": "הבא",
+                        "last": "אחרון",
+                        "first": "ראשון"
+                    }
+                }
+            });
+
+            $('div.dataTables_filter input').addClass('form-control');
+        });
+    </script>
+
+}

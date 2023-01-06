@@ -1,0 +1,28 @@
+﻿@model List<MeterReaderCMS.Models.ViewModels.MeterReader.MeterReaderDashboardVM>
+@{
+    ViewBag.Title = "מערכת תשלומים";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-5">
+            <h1 class="mt-4">מערכת קריאת מונים</h1>
+        </div>
+
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header text-right">
+                    <i class="fas fa-chart-bar me-1"></i>
+                   נתוני קיראות
+                </div>
+                <div class="card-body"><canvas id="myBarChart"></canvas></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="~/Scripts/chart-bar-demo.js"></script>
+}

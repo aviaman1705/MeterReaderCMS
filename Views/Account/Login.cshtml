@@ -1,0 +1,54 @@
+﻿@model MeterReaderCMS.Models.ViewModels.LoginUserVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow" />
+    <title>כניסה - MeterReaderCMS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="~/Content/login.css" rel="stylesheet" />
+</head>
+<body>
+    <section class="container-fluid">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-6 col-md-3">
+                <img src="~/Images/icons/Anonimus.png" class="bg" />
+
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-container" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4 class="text-center font-eight-bold">כניסה</h4>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label form-lbl" })
+                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control form-input", id = "exampleInputUsername", placeholder = "הזן מייל" } })
+                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label form-lbl" })
+                        @Html.PasswordFor(model => model.Password, new { @class = "form-control form-input", @placeholder = "הזן סיסמא" })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("CustomError", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group form-check">
+                        <label class="control-label form-lbl" for="HasSidebar">זכור אותי</label>
+                        @Html.EditorFor(model => model.RememberMe, new { @class = "form-control form-checkbox" })
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">כניסה</button>
+                    <div class="d-flex justify-content-center">
+                        <a href="~/Account/Register">הרשמה</a>
+                    </div>
+                }
+
+            </section>
+        </section>
+    </section>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
