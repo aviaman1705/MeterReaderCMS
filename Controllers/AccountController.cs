@@ -73,6 +73,9 @@ namespace MeterReaderCMS.Controllers
                 }
                 else
                 {
+                    logger.Info("Login");
+                    logger.Debug("Login Debug");
+                    logger.Error($"Login() {DateTime.Now}");
                     FormsAuthentication.SetAuthCookie(model.Username, model.RememberMe);
                     return RedirectToAction("Index", "Home");
                 }
