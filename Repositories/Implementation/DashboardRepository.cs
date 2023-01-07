@@ -1,9 +1,6 @@
-﻿using MeterReaderCMS.Models.ViewModels.MeterReader;
-using MeterReaderCMS.Models.Entities;
+﻿using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Repositories.Interfaces;
-using System;
 using System.Linq;
-using System.Data.Entity;
 using System.Collections.Generic;
 
 namespace MeterReaderCMS.Repositories.Implementation
@@ -12,9 +9,9 @@ namespace MeterReaderCMS.Repositories.Implementation
     {
         private MeterReaderDB context = new MeterReaderDB();
 
-        public List<MeterReaderDashboardVM> GetDashboardData(string userName)
+        public List<CallSummary> GetDashboardData(string userName)
         {
-            var dashboardData = context.Database.SqlQuery<MeterReaderDashboardVM>("SP_GetDashboardData @UserName = {0}", userName).ToList();
+            var dashboardData = context.Database.SqlQuery<CallSummary>("SP_GetDashboardData @UserName = {0}", userName).ToList();
             return dashboardData;
         }
     }
