@@ -19,9 +19,21 @@ namespace MeterReaderCMS.Infrastructure
         public AutomappWebProfile()
         {
 
+            #region Track
             CreateMap<CreateTrackDTO, Track>()
+               .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
+               .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled));
+
+            CreateMap<EditTrackDTO, Track>()
+               .ForMember(dest => dest.NotebookId, opt => opt.MapFrom(src => src.NoteBookID))
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
                 .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
-                .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled));
+               .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled));
+
+            CreateMap<Track, EditTrackDTO>()
+             .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
+             .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled))
+             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)));
 
             CreateMap<Track, TrackListItemDTO>()
                 .ForMember(dest => dest.StreetName, opt => opt.MapFrom(src => src.NoteBook.StreetName))
@@ -31,9 +43,10 @@ namespace MeterReaderCMS.Infrastructure
             CreateMap<Track, SelectListItem>()
                   .ForMember(dest => dest.Disabled, opt => opt.MapFrom(src => true))
                   .ForMember(dest => dest.Selected, opt => opt.MapFrom(src => true))
-                  .ForMember(dest => dest.Text, 
+                  .ForMember(dest => dest.Text,
                   opt => opt.MapFrom(src => $"{src.ElectricityMeterCalled} {src.ElectricityMeterUnCalled} {DateTime.Now.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)}"));
-                
+            #endregion
+
 
             CreateMap<MeterReader, AddBoulderVM>().ReverseMap();
 

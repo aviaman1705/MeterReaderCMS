@@ -1,0 +1,87 @@
+﻿@model MeterReaderCMS.Models.DTO.Track.EditTrackDTO
+
+@{
+    ViewBag.Title = "עריכת מסלול";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12 title-section">
+        <h2 class="main-page-title">@ViewBag.Title</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4 col-sm-12 col-xs-12"></div>
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        @using (Html.BeginForm("EditTrack", "Tracks", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-horizontal">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NoteBookID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.DropDownListFor(model => model.NoteBookID,
+                      (IEnumerable<SelectListItem>)ViewBag.NoteBooks, "נא בחר פנקס",
+                      new
+                           {
+                               id = "ddlNoteBooks",
+                          @class = "form-control form-input"
+                      })
+                        @Html.ValidationMessageFor(model => model.NoteBookID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control form-input datepicker" } })
+                        @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
+                        @Html.ValidationMessage("CustomError", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Called, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.Called, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.Called, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UnCalled, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10 text-right">
+                        @Html.EditorFor(model => model.UnCalled, new { htmlAttributes = new { @class = "form-control form-input" } })
+                        @Html.ValidationMessageFor(model => model.UnCalled, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-12 form-buttons-section text-right">
+                        @Html.ActionLink("חזרה לרשימה", "Index", null, new { @class = "btn btn-info" })
+                        <input type="submit" value="עריכת קריאה" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+                changemonth: true,
+                changeyear: true
+            });
+        });
+    </script>
+}
+

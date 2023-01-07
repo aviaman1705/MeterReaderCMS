@@ -303,6 +303,7 @@
     <Compile Include="Models\DTO\TrackDTO.cs" />
     <Compile Include="Models\DTO\TrackListItemDTO.cs" />
     <Compile Include="Models\DTO\Track\CreateTrackDTO.cs" />
+    <Compile Include="Models\DTO\Track\EditTrackDTO.cs" />
     <Compile Include="Models\Entities\BaseClass.cs" />
     <Compile Include="Models\Entities\Dashboard.cs" />
     <Compile Include="Models\Entities\MeterReader.cs" />
@@ -799,6 +800,7 @@
     <Content Include="Scripts\sb-admin.min.js" />
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Tracks\AddTrack.cshtml" />
+    <Content Include="Views\Tracks\EditTrack.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

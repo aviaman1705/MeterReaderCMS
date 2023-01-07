@@ -79,11 +79,7 @@ namespace MeterReaderCMS.Controllers
                 {
                     entity.UserId = currentUser.UserId;
                     _trackRepository.Add(entity);
-                    Utilities.updateCache<TrackListItemDTO>(
-                        Constant.TrackList,
-                        Constant.CacheTime,
-                        Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().OrderByDescending(m => m.Date)));
-
+                    updateCache();
                     ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
                 }
 
@@ -96,6 +92,78 @@ namespace MeterReaderCMS.Controllers
                 _logger.Error("==============================");
                 return null;
             }
+        }
+
+        [HttpGet]
+        public ActionResult EditTrack(int id)
+        {
+            try
+            {
+                EditTrackDTO model;
+                Track dto = _trackRepository.Get(id);
+
+                if (dto == null)
+                {
+                    return Content("מסלול לא קיים");
+                }
+
+                ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                model = Mapper.Map<EditTrackDTO>(dto);
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error(ex.Message);
+                _logger.Error("==============================");
+                return null;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditTrack(EditTrackDTO model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                    return View(model);
+                }
+
+                DateTime trackDate = DateTime.ParseExact(model.Date, "dd/MM/yyyy", null);
+                Track dto = _trackRepository.Get(model.Id);
+
+                if (dto == null)
+                {
+                    return Content("המסלול לא קיים");
+                }
+                else
+                {
+                    dto = Mapper.Map<Track>(model);
+                    dto.Date = trackDate;
+                    _trackRepository.Update(dto);
+                    updateCache();
+                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+
+                    return View(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error(ex.Message);
+                _logger.Error("==============================");
+                return null;
+            }
+        }
+
+        private void updateCache()
+        {
+            Utilities.updateCache<TrackListItemDTO>(
+                         Constant.TrackList,
+                         Constant.CacheTime,
+                         Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().OrderByDescending(m => m.Date)));
         }
     }
 }

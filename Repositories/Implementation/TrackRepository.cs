@@ -59,6 +59,7 @@ namespace MeterReaderCMS.Repositories.Implementation
                 entity.Date = item.Date;
                 entity.ElectricityMeterCalled = item.ElectricityMeterCalled;
                 entity.ElectricityMeterUnCalled = item.ElectricityMeterUnCalled;
+                entity.NotebookId = item.NotebookId;
                 context.SaveChanges();
                 isUpdated = true;
             }
