@@ -158,6 +158,24 @@ namespace MeterReaderCMS.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult DeleteTrack(int id)
+        {
+            try
+            {
+                _trackRepository.Delete(id);
+                updateCache();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.Error($"DeleteTrack() {DateTime.Now}");
+                _logger.Error(ex.Message);
+                _logger.Error("==============================");
+                return null;
+            }
+        }
+
         private void updateCache()
         {
             Utilities.updateCache<TrackListItemDTO>(
