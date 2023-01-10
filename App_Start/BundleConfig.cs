@@ -18,8 +18,7 @@ namespace MeterReaderCMS
             bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include(
                                                 "~/Scripts/nagishli.js",
                                                 "~/Scripts/bootstrap.min.js",
-                                                "~/Scripts/main.js",
-                                               "~/Scripts/sb-admin.min.js"
+                                                "~/Scripts/main.js"                                               
                                             ));
             
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.min.css"));
