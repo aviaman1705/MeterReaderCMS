@@ -34,8 +34,8 @@
                             @foreach (var item in ViewBag.Tracks)
                             {
                                 <tr>
-                                    <td>@item.ElectricityMeterCalled</td>
                                     <td>@item.ElectricityMeterUnCalled</td>
+                                    <td>@item.ElectricityMeterCalled</td>
                                     <td>@item.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)</td>
                                 </tr>
                             }
