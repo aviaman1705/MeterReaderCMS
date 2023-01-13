@@ -33,7 +33,16 @@ namespace MeterReaderCMS.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<ThItem> cells = new List<ThItem>();
+            cells.Add(new ThItem() { fieldName = "מחיקה" });
+            cells.Add(new ThItem() { fieldName = "עריכה" });
+            cells.Add(new ThItem() { fieldName = "רחוב" });
+            cells.Add(new ThItem() { fieldName = "מספר פנקס" });
+            cells.Add(new ThItem() { fieldName = "מזהה ייחודי" });
+
+            List<TBodyItem> items = _trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).Select(x => new TBodyItem() { FieldName = x.NoteBook.StreetName.ToString(), Value = x.NoteBook.StreetName }).ToList();
+
+            return View(cells);
         }
 
         [HttpGet]
