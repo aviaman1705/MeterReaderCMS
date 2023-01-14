@@ -19,10 +19,8 @@ namespace MeterReaderCMS.Models.DTO
         public int Number { get; set; }
 
         [Display(Name = "רחוב")]
-        [Required(ErrorMessage = "חובה להזין רחוב")]
         public string StreetName { get; set; }
-
-        public virtual List<MeterReaderGridVM> MetersReaders { get; set; }
+        
         public virtual List<TrackDTO> Tracks { get; set; }
     }
 }
