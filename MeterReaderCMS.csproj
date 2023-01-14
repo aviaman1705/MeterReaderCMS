@@ -799,6 +799,7 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\nagishli.js" />
     <Content Include="Scripts\sb-admin.min.js" />
+    <Content Include="Scripts\script-notebook-custom-validator.js" />
     <Content Include="Scripts\script-track-custom-validator.js" />
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Tracks\AddTrack.cshtml" />

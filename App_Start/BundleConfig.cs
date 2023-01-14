@@ -25,6 +25,7 @@ namespace MeterReaderCMS
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate.js", "~/Scripts/jquery.validate.unobtrusive.js"));
             // JQuery validator.
+            bundles.Add(new ScriptBundle("~/bundles/notebook-custom-validator").Include("~/Scripts/script-notebook-custom-validator.js"));
             bundles.Add(new ScriptBundle("~/bundles/track-custom-validator").Include("~/Scripts/script-track-custom-validator.js"));
         }
     }

@@ -1,5 +1,14 @@
-﻿$('#addNotebookFormId').validate({
-    errorClass: 'help-block animation-slideDown text-danger', // You can change the animation class for a different entrance animation - check animations page
+﻿
+$.validator.addMethod("validateDate",
+    function (value, element) {
+        return /^\d{2}\/\d{2}\/\d{4}$/.test(value);
+    },
+    'תאריך חייב להיות בפורמט {mm/dd/yyyy}'
+);
+
+
+$('#trackFormId').validate({
+    errorClass: 'help-block animation-slideDown text-danger', 
     errorElement: 'div',
     errorPlacement: function (error, e) {
         e.parents('.form-group > div').append(error);
@@ -13,35 +22,22 @@
         e.closest('.help-block').remove();
     },
     rules: {
-        'Number': {
-            required: true,
-            minlength: 2,
-            number: true
+        'NoteBookID': {
+            required: true
         },
-        //'Password': {
-        //    required: true,
-        //    minlength: 6
-        //},
-        //'ConfirmPassword': {
-        //    required: true,
-        //    equalTo: '#Password'
-        //}
+        'Date': {
+            required: true,
+            validateDate: true,
+        },
     }, messages: {
-        'Number':
+        NoteBookID:
         {
-            required: 'שדה מספר פנקס הוא שדה חובה',
-            minlength: 'מספר פנקס חייב להכיל 2 ספרות לפחות',
-            number:'שדה זה מכיל רק ספרות'
+            required: 'חובה לבחור מספר פנקס'
+        },
+
+        Date: {
+            required: 'חובה לבחור תאריך'
         }
-        //'Email': 'Please enter valid email address',
-        //Password: {
-        //    required: 'Please provide a password',
-        //    minlength: 'Your password must be at least 6 characters long'
-        //},
-        //'ConfirmPassword': {
-        //    required: 'Please provide a password',
-        //    minlength: 'Your password must be at least 6 characters long',
-        //    equalTo: 'Please enter the same password as above'
-        //}
     }
 })
+
