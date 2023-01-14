@@ -219,7 +219,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\api\AccountController.cs" />
-    <Compile Include="Controllers\api\BouldersController.cs" />
     <Compile Include="Controllers\api\HomeController.cs" />
     <Compile Include="Controllers\api\NotebooksController.cs" />
     <Compile Include="Controllers\api\SearchController.cs" />
@@ -298,16 +297,17 @@
       <DependentUpon>202301030047342_add user foreign key to tracks table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DTO\Notebook\AddBotebookDTO.cs" />
+    <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
     <Compile Include="Models\DTO\Home\CallSummaryDTO.cs" />
+    <Compile Include="Models\DTO\Notebook\NotebookDTO.cs" />
     <Compile Include="Models\Entities\CallSummary.cs" />
-    <Compile Include="Models\DTO\EditNotebookDTO.cs" />
-    <Compile Include="Models\DTO\TrackDTO.cs" />
+    <Compile Include="Models\DTO\Track\TrackDTO.cs" />
     <Compile Include="Models\DTO\TrackListItemDTO.cs" />
     <Compile Include="Models\DTO\Track\CreateTrackDTO.cs" />
     <Compile Include="Models\DTO\Track\EditTrackDTO.cs" />
     <Compile Include="Models\Entities\BaseClass.cs" />
     <Compile Include="Models\Entities\Dashboard.cs" />
-    <Compile Include="Models\Entities\MeterReader.cs" />
     <Compile Include="Models\Entities\MeterReaderDB.cs" />
     <Compile Include="Models\Entities\Notebook.cs" />
     <Compile Include="Models\Entities\Role.cs" />
@@ -315,29 +315,19 @@
     <Compile Include="Models\Entities\Track.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserRole.cs" />
-    <Compile Include="Models\ViewModels\MeterReader\AddBoulderVM.cs" />
-    <Compile Include="Models\ViewModels\MeterReader\EditBoulderVM.cs" />
-    <Compile Include="Models\ViewModels\MeterReader\NotebookVM.cs" />
-    <Compile Include="Models\ViewModels\SearchItemVM.cs" />
-    <Compile Include="Models\ViewModels\SysDataTablePager.cs" />
-    <Compile Include="Models\ViewModels\DashboardVM.cs" />
-    <Compile Include="Models\ViewModels\ListItemVM.cs" />
-    <Compile Include="Models\ViewModels\LoginUserVM.cs" />
-    <Compile Include="Models\ViewModels\MeterReader\MeterReaderGridVM.cs" />
-    <Compile Include="Models\ViewModels\MeterReader\MeterReaderDashboardVM.cs" />
-    <Compile Include="Models\ViewModels\PageClientVM.cs" />
-    <Compile Include="Models\ViewModels\UserNavPartialVM.cs" />
-    <Compile Include="Models\ViewModels\UserProfileVM.cs" />
-    <Compile Include="Models\ViewModels\UserVM.cs" />
+    <Compile Include="Models\DTO\Search\SearchItemDTO.cs" />
+    <Compile Include="Helper\SysDataTablePager.cs" />
+    <Compile Include="Models\DTO\User\LoginUserDTO.cs" />
+    <Compile Include="Models\DTO\User\UserNavPartialDTO.cs" />
+    <Compile Include="Models\DTO\User\UserProfileDTO.cs" />
+    <Compile Include="Models\DTO\User\UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementation\DashboardRepository.cs" />
-    <Compile Include="Repositories\Implementation\MeterReaderRepository.cs" />
     <Compile Include="Repositories\Implementation\NotebookRepository.cs" />
     <Compile Include="Repositories\Implementation\SearchRepository.cs" />
     <Compile Include="Repositories\Implementation\TrackRepository.cs" />
     <Compile Include="Repositories\Implementation\UserRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDashboardRepository.cs" />
-    <Compile Include="Repositories\Interfaces\IMeterReaderRepository.cs" />
     <Compile Include="Repositories\Interfaces\INotebookRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISearchRepository.cs" />
@@ -830,7 +820,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\ViewModels\User\" />
     <Folder Include="Scripts\ckeditor\fileman\aspnet_client\system_web\2_0_50727\" />
     <Folder Include="Scripts\ckeditor\fileman\aspnet_client\system_web\4_0_30319\" />
     <Folder Include="Scripts\ckeditor\fileman\asp_net\" />

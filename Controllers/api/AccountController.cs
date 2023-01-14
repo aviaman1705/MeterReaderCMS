@@ -13,6 +13,7 @@ using System.Configuration;
 using MeterReaderCMS.Helper;
 using System.Web;
 using System.Web.Http.Cors;
+using MeterReaderCMS.Models.DTO.User;
 
 namespace MeterReaderCMS.Controllers.api
 {
@@ -28,7 +29,7 @@ namespace MeterReaderCMS.Controllers.api
         }
 
         [ValidateAntiForgeryToken]
-        public IHttpActionResult Login(LoginUserVM model)
+        public IHttpActionResult Login(LoginUserDTO model)
         {
             try
             {

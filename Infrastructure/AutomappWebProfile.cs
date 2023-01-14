@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using MeterReaderCMS.Areas.admin.Data;
 using MeterReaderCMS.Models.DTO;
 using MeterReaderCMS.Models.DTO.Track;
 using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Models.ViewModels;
-using MeterReaderCMS.Models.ViewModels.MeterReader;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -18,7 +16,6 @@ namespace MeterReaderCMS.Infrastructure
     {
         public AutomappWebProfile()
         {
-
             #region Track
             CreateMap<CreateTrackDTO, Track>()
                .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
@@ -47,22 +44,8 @@ namespace MeterReaderCMS.Infrastructure
                   opt => opt.MapFrom(src => $"{src.ElectricityMeterCalled} {src.ElectricityMeterUnCalled} {DateTime.Now.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)}"));
             #endregion
 
-
-            CreateMap<MeterReader, AddBoulderVM>().ReverseMap();
-
-            CreateMap<MeterReader, EditBoulderVM>()
-               .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)));
-
-            CreateMap<EditBoulderVM, MeterReader>()
-              .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.Called))
-              .ForMember(dest => dest.Left, opt => opt.MapFrom(src => src.Left))
-              .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.UnCalled));
-
-            CreateMap<MeterReader, MeterReaderGridVM>()
-              .ForMember(dest => dest.StreetName, opt => opt.MapFrom(src => (src.NoteBook.StreetName)))
-              .ForMember(dest => dest.NoteBookNumber, opt => opt.MapFrom(src => src.NoteBook.Number));
-
-            CreateMap<UserVM, User>()
+            #region User
+            CreateMap<UserDTO, User>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
@@ -70,7 +53,7 @@ namespace MeterReaderCMS.Infrastructure
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
                 .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username));
 
-            CreateMap<User, UserProfileVM>()
+            CreateMap<User, UserProfileDTO>()
                 .ForMember(dest => dest.ConfirmPassword, opt => opt.MapFrom(src => ""))
                 .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
@@ -79,9 +62,10 @@ namespace MeterReaderCMS.Infrastructure
                 .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
                 .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username));
 
-            CreateMap<UserProfileVM, User>()
+            CreateMap<UserProfileDTO, User>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
+            #endregion
         }
         public static void Run()
         {

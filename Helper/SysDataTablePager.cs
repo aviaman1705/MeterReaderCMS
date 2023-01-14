@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MeterReaderCMS.Models.ViewModels
+namespace MeterReaderCMS.Helper
 {
     public class SysDataTablePager<T>
     {
@@ -15,8 +15,6 @@ namespace MeterReaderCMS.Models.ViewModels
             this.sEcho = sEcho;
         }
 
-
-
         public IEnumerable<T> aaData { get; set; }
 
         public int iTotalRecords { get; set; }
@@ -24,8 +22,5 @@ namespace MeterReaderCMS.Models.ViewModels
         public int iTotalDisplayRecords { get; set; }
 
         public string sEcho { get; set; }
-
-        //public decimal Called { get; set; }
-        //public decimal UnCalled { get; set; }
     }
 }

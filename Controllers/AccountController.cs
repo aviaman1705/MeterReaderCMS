@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Infrastructure;
+using MeterReaderCMS.Models.DTO.User;
 using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Models.ViewModels;
 using MeterReaderCMS.Repositories.Interfaces;
@@ -47,7 +48,7 @@ namespace MeterReaderCMS.Controllers
 
         // POST: /Account/Login
         [HttpPost]
-        public ActionResult Login(LoginUserVM model)
+        public ActionResult Login(LoginUserDTO model)
         {
             try
             {
@@ -96,7 +97,7 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(UserVM model)
+        public ActionResult Register(UserDTO model)
         {
             try
             {
@@ -168,13 +169,13 @@ namespace MeterReaderCMS.Controllers
                 string username = User.Identity.Name;
 
                 // Declare model
-                UserNavPartialVM model;
+                UserNavPartialDTO model;
 
                 // Get the user
                 User dto = _userRepository.Get(username);
 
                 // Build the model
-                model = new UserNavPartialVM()
+                model = new UserNavPartialDTO()
                 {
                     FirstName = dto.FirstName,
                     LastName = dto.LastName
@@ -204,13 +205,13 @@ namespace MeterReaderCMS.Controllers
                 string username = User.Identity.Name;
 
                 // declare model
-                UserProfileVM model;
+                UserProfileDTO model;
 
                 // get user
                 User dto = _userRepository.Get(username);
 
                 // build model
-                model = Mapper.Map<UserProfileVM>(dto);
+                model = Mapper.Map<UserProfileDTO>(dto);
 
                 // Return view with model
                 return View("UserProfile", model);
@@ -228,7 +229,7 @@ namespace MeterReaderCMS.Controllers
         [HttpPost]
         [ActionName("user-profile")]
         [Authorize]
-        public ActionResult UserProfile(UserProfileVM model)
+        public ActionResult UserProfile(UserProfileDTO model)
         {
             try
             {

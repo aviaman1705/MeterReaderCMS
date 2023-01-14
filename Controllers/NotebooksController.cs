@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Infrastructure;
-using MeterReaderCMS.Models.DTO;
+using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Models.Entities;
-using MeterReaderCMS.Models.ViewModels.MeterReader;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;
@@ -46,7 +45,7 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddNotebook([Bind(Exclude = "Id")] NotebookVM model)
+        public ActionResult AddNotebook([Bind(Exclude = "Id")] NotebookDTO model)
         {
             try
             {
@@ -177,8 +176,8 @@ namespace MeterReaderCMS.Controllers
         private void updateCache()
         {
             MemoryCacher.Delete(Constant.NotebookList);
-            var notebooks = new List<NotebookVM>();
-            notebooks = Mapper.Map<List<NotebookVM>>(_notebookRepository.GetAll().OrderByDescending(m => m.Number).ToList());
+            var notebooks = new List<NotebookDTO>();
+            notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().OrderByDescending(m => m.Number).ToList());
             MemoryCacher.Add(Constant.NotebookList, notebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
         }
 

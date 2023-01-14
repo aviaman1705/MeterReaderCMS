@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace MeterReaderCMS.Models.ViewModels
+namespace MeterReaderCMS.Models.DTO.User
 {
-    public class LoginUserVM
+    public class LoginUserDTO
     {
         [Required]
         [Display(Name = "שם משתמש")]

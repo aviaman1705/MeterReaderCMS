@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Models.Entities;
-using MeterReaderCMS.Models.ViewModels.MeterReader;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;
@@ -48,7 +48,7 @@ namespace MeterReaderCMS.Controllers.api
                 int number;
                 if (int.TryParse(item, out number))
                 {
-                    NotebookVM itemData = Mapper.Map<NotebookVM>(_notebookRepository.GetAll().Where(x => x.Number == number).FirstOrDefault());
+                    NotebookDTO itemData = Mapper.Map<NotebookDTO>(_notebookRepository.GetAll().Where(x => x.Number == number).FirstOrDefault());
                     return Ok(itemData);
                 }
                 else

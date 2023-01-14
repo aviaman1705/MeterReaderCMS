@@ -63,6 +63,6 @@ namespace MeterReaderCMS.Models.Entities
         }
 
         public virtual ICollection<Role> Roles { get; set; }
-        public virtual List<MeterReader> MetersReaders { get; set; }
+        public virtual List<Track> Tracks { get; set; }
     }
 }

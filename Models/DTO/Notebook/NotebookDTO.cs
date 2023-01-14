@@ -1,15 +1,14 @@
-﻿using MeterReaderCMS.Models.ViewModels.MeterReader;
+﻿using MeterReaderCMS.Models.DTO;
+using MeterReaderCMS.Models.DTO.Track;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using System.Web.UI.WebControls;
 
-namespace MeterReaderCMS.Models.DTO
+namespace MeterReaderCMS.Models.DTO.Notebook
 {
-    public class EditNotebookDTO
+    public class NotebookDTO
     {
         public int Id { get; set; }
 
@@ -18,7 +17,7 @@ namespace MeterReaderCMS.Models.DTO
         [Range(1, int.MaxValue, ErrorMessage = "הזן ערך גדול מ- 1")]
         public int Number { get; set; }
 
-        [Display(Name = "רחוב")]
+        [Display(Name = "רחוב")]       
         public string StreetName { get; set; }
         
         public virtual List<TrackDTO> Tracks { get; set; }

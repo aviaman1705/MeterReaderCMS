@@ -1,15 +1,14 @@
-﻿using AutoMapper;
-using MeterReaderCMS.Infrastructure;
-using MeterReaderCMS.Models.ViewModels;
-using MeterReaderCMS.Models.ViewModels.MeterReader;
-using MeterReaderCMS.Repositories.Interfaces;
-using NLog;
+﻿using NLog;
 using System;
-using System.Collections.Generic;
+using AutoMapper;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using MeterReaderCMS.Helper;
+using System.Collections.Generic;
+using MeterReaderCMS.Infrastructure;
+using MeterReaderCMS.Models.DTO.Notebook;
+using MeterReaderCMS.Repositories.Interfaces;
+
 
 namespace MeterReaderCMS.Controllers.api
 {
@@ -32,17 +31,17 @@ namespace MeterReaderCMS.Controllers.api
                 string sortOrder = sSortDir_0;
                 var Count = 0;
 
-                var notebooks = new List<NotebookVM>();
+                var notebooks = new List<NotebookDTO>();
 
                 if (!string.IsNullOrEmpty(sSearch))
                 {
                     if (MemoryCacher.GetValue(Constant.NotebookList) != null)
                     {
-                        notebooks = (List<NotebookVM>)MemoryCacher.GetValue(Constant.NotebookList);
+                        notebooks = (List<NotebookDTO>)MemoryCacher.GetValue(Constant.NotebookList);
                     }
                     else
                     {
-                        notebooks = Mapper.Map<List<NotebookVM>>(_notebookRepository.GetAll()).ToList();
+                        notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll()).ToList();
                     }
 
                     var filterdNotebooks = notebooks
@@ -57,11 +56,11 @@ namespace MeterReaderCMS.Controllers.api
                 {
                     if (MemoryCacher.GetValue(Constant.NotebookList) != null)
                     {
-                        notebooks = (List<NotebookVM>)MemoryCacher.GetValue(Constant.NotebookList);
+                        notebooks = (List<NotebookDTO>)MemoryCacher.GetValue(Constant.NotebookList);
                     }
                     else
                     {
-                        notebooks = Mapper.Map<List<NotebookVM>>(_notebookRepository.GetAll().OrderBy(m => m.Number).ToList());
+                        notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().OrderBy(m => m.Number).ToList());
                         MemoryCacher.Add(Constant.NotebookList, notebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
                     }
 
@@ -69,7 +68,7 @@ namespace MeterReaderCMS.Controllers.api
                     notebooks = SortFunction(iSortCol, sortOrder, notebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
                 }
 
-                var bouldersPaged = new SysDataTablePager<NotebookVM>(notebooks, Count, Count, sEcho);
+                var bouldersPaged = new SysDataTablePager<NotebookDTO>(notebooks, Count, Count, sEcho);
 
                 return Ok(bouldersPaged);
             }
@@ -82,7 +81,7 @@ namespace MeterReaderCMS.Controllers.api
             }
         }
 
-        private List<NotebookVM> SortFunction(int iSortCol, string sortOrder, List<NotebookVM> list)
+        private List<NotebookDTO> SortFunction(int iSortCol, string sortOrder, List<NotebookDTO> list)
         {
             if (iSortCol == 2 || iSortCol == 3 || iSortCol == 4)
             {

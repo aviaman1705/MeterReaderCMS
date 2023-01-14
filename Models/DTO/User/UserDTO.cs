@@ -6,7 +6,7 @@ using System.Web;
 
 namespace MeterReaderCMS.Models.ViewModels
 {
-    public class UserVM
+    public class UserDTO
     {
         [Key]
         public int Id { get; set; }

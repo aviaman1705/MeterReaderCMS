@@ -1,10 +1,10 @@
-﻿using MeterReaderCMS.Models.ViewModels.MeterReader;
+﻿using MeterReaderCMS.Models.DTO.Notebook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MeterReaderCMS.Models.DTO
+namespace MeterReaderCMS.Models.DTO.Track
 {
     public class TrackDTO
     {
@@ -18,6 +18,6 @@ namespace MeterReaderCMS.Models.DTO
 
         public int NotebookId{ get; set; }
         
-        public virtual NotebookVM NoteBook { get; set; }
+        public virtual NotebookDTO NoteBook { get; set; }
     }
 }

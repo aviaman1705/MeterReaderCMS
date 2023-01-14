@@ -14,8 +14,7 @@ namespace MeterReaderCMS.Models.Entities
         }
 
         public DbSet<Role> Roles { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<MeterReader> MetersReaders { get; set; }
+        public DbSet<User> Users { get; set; }        
         public DbSet<Notebook> Notesbooks { get; set; }
         public DbSet<Track> Tracks { get; set; }
     }
