@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Models.DTO.Search;
-using MeterReaderCMS.Models.ViewModels;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;

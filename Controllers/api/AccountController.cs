@@ -1,5 +1,4 @@
-﻿using MeterReaderCMS.Models.ViewModels;
-using MeterReaderCMS.Repositories.Interfaces;
+﻿using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;
 using System.Collections.Generic;

@@ -2,7 +2,6 @@
 using MeterReaderCMS.Infrastructure;
 using MeterReaderCMS.Models.DTO.User;
 using MeterReaderCMS.Models.Entities;
-using MeterReaderCMS.Models.ViewModels;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;

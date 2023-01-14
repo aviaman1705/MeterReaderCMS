@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Models.DTO;
 using MeterReaderCMS.Models.DTO.Track;
+using MeterReaderCMS.Models.DTO.User;
 using MeterReaderCMS.Models.Entities;
-using MeterReaderCMS.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -296,6 +296,10 @@
     <Compile Include="Migrations\202301030047342_add user foreign key to tracks table.designer.cs">
       <DependentUpon>202301030047342_add user foreign key to tracks table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202301140653334_remove meter readers table.cs" />
+    <Compile Include="Migrations\202301140653334_remove meter readers table.designer.cs">
+      <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\Notebook\AddBotebookDTO.cs" />
     <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
@@ -794,7 +798,6 @@
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Tracks\AddTrack.cshtml" />
     <Content Include="Views\Tracks\EditTrack.cshtml" />
-    <Content Include="Views\Notebooks\AddNotebookTwo.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -876,6 +879,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301030047342_add user foreign key to tracks table.resx">
       <DependentUpon>202301030047342_add user foreign key to tracks table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202301140653334_remove meter readers table.resx">
+      <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
