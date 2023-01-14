@@ -24,7 +24,7 @@ namespace MeterReaderCMS.Repositories.Implementation
 
         public Notebook Get(int id)
         {
-            return context.Notesbooks.Include(x => x.MetersReaders).Include(x => x.Tracks).FirstOrDefault(x => x.Id == id);
+            return context.Notesbooks.Include(x => x.Tracks).FirstOrDefault(x => x.Id == id);
         }
 
         public bool Update(Notebook item)

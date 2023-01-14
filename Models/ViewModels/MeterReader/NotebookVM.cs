@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeterReaderCMS.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,10 +16,9 @@ namespace MeterReaderCMS.Models.ViewModels.MeterReader
         [Range(1, int.MaxValue, ErrorMessage = "הזן ערך גדול מ- 1")]
         public int Number { get; set; }
 
-        [Display(Name = "רחוב")]
-        //[Required(ErrorMessage = "חובה לבחור רחוב")]
+        [Display(Name = "רחוב")]       
         public string StreetName { get; set; }
-
-        public virtual List<MeterReaderGridVM> MetersReaders { get; set; }
+        
+        public virtual List<TrackDTO> Tracks { get; set; }
     }
 }

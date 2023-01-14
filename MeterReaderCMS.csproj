@@ -224,7 +224,6 @@
     <Compile Include="Controllers\api\NotebooksController.cs" />
     <Compile Include="Controllers\api\SearchController.cs" />
     <Compile Include="Controllers\api\TracksController.cs" />
-    <Compile Include="Controllers\BouldersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NotebooksController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -800,9 +799,11 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\nagishli.js" />
     <Content Include="Scripts\sb-admin.min.js" />
+    <Content Include="Scripts\script-custom-validator.js" />
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Tracks\AddTrack.cshtml" />
     <Content Include="Views\Tracks\EditTrack.cshtml" />
+    <Content Include="Views\Notebooks\AddNotebookTwo.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -820,9 +821,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\UserNavPartial.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
-    <Content Include="Views\Boulders\Index.cshtml" />
-    <Content Include="Views\Boulders\AddBoulder.cshtml" />
-    <Content Include="Views\Boulders\EditBoulder.cshtml" />
     <Content Include="Views\Notebooks\AddNotebook.cshtml" />
     <Content Include="Views\Notebooks\EditNotebook.cshtml" />
     <Content Include="Views\Notebooks\Index.cshtml" />

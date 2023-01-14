@@ -12,7 +12,6 @@ namespace MeterReaderCMS.Models.Entities
     {
         public int Number { get; set; }
         public string StreetName { get; set; }
-        public virtual List<MeterReader> MetersReaders { get; set; }
         public virtual List<Track> Tracks { get; set; }
     }
 }

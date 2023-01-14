@@ -149,6 +149,7 @@ namespace MeterReaderCMS.Controllers
             }
         }
 
+
         [HttpGet]
         public ActionResult DeleteBoulder(int id)
         {
@@ -156,7 +157,7 @@ namespace MeterReaderCMS.Controllers
             {
                 Notebook notebookToDelete = _notebookRepository.Get(id);
 
-                if (notebookToDelete.MetersReaders.Count() == 0)
+                if (notebookToDelete.Tracks.Count() == 0)
                 {
                     _notebookRepository.Delete(id);
                     updateCache();
