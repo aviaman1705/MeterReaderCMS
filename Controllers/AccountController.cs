@@ -238,43 +238,16 @@ namespace MeterReaderCMS.Controllers
                     return View("UserProfile", model);
                 }
 
-                //2.Check if password and confitm password are equals
-                if (!string.IsNullOrWhiteSpace(model.Password))
-                {
-                    if (!model.Password.Equals(model.ConfirmPassword))
-                    {
-                        ModelState.AddModelError("", "Passwords do not match.");
-                        return View("UserProfile", model);
-                    }
-                }
-
-                //3.Get username
                 string username = User.Identity.Name;
-
-                //4.Make sure username is unique
-                if (_userRepository.GetAll().Where(x => x.UserId != model.Id).Any(x => x.Username == username))
-                {
-                    ModelState.AddModelError("", $"username {model.Username} already exsists.");
-                    model.Username = "";
-                    return View("UserProfile", model);
-                }
-
-                //5.Get the DTO
+   
                 User dto = Mapper.Map<User>(model);
-
-                if (!string.IsNullOrWhiteSpace(model.Password))
-                {
-                    dto.Password = model.Password;
-                }
-
-                //6.Check if the user exists
+                
                 if (dto != null)
                 {
                     _userRepository.Update(dto);
                     FormsAuthentication.SetAuthCookie(dto.Username, true);
                 }
-
-                //7.Return view with model
+                
                 return Redirect("~/account/User-profile");
             }
             catch (Exception ex)

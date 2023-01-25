@@ -47,24 +47,15 @@ namespace MeterReaderCMS.Infrastructure
             #region User
             CreateMap<UserDTO, User>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
-                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username));
+                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
 
             CreateMap<User, UserProfileDTO>()
-                .ForMember(dest => dest.ConfirmPassword, opt => opt.MapFrom(src => ""))
                 .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
-                .ForMember(dest => dest.Password, opt => opt.MapFrom(src => src.Password))
-                .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId)).ReverseMap();
 
-            CreateMap<UserProfileDTO, User>()
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
-                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
+            //CreateMap<UserProfileDTO, User>()
+            //    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
+            //    .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             #endregion
         }
         public static void Run()

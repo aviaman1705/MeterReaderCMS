@@ -28,11 +28,12 @@ namespace MeterReaderCMS.Models.DTO.User
         public string Username { get; set; }
 
         [Display(Name = "סיסמא")]
-        [Required(ErrorMessage = "חובה להזין סיסמא")]
+        //[Required(ErrorMessage = "חובה להזין סיסמא")]
+        //[Editable(false)]
         public string Password { get; set; }
 
-        [Display(Name = "אימות סיסמא")]
-        [Required(ErrorMessage = "חובה להזין אימות סיסמא")]
-        public string ConfirmPassword { get; set; }
+        //[Display(Name = "אימות סיסמא")]
+        //[Required(ErrorMessage = "חובה להזין אימות סיסמא")]
+        //public string ConfirmPassword { get; set; }
     }
 }

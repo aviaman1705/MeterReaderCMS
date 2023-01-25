@@ -48,6 +48,7 @@ namespace MeterReaderCMS.Controllers.api
                            .Where(m => m.Called.ToString().Contains(sSearch)
                            || m.Date.ToString("dd/MM/yyyy").Contains(sSearch)
                            || m.NoteBookNumber.ToString().Contains(sSearch)
+                           || m.StreetName.Contains(sSearch)
                            || m.UnCalled.ToString().Contains(sSearch)).ToList();
 
                     MemoryCacher.Add(Constant.TrackList, filterdTracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
