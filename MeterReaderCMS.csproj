@@ -305,6 +305,8 @@
     <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
     <Compile Include="Models\DTO\Home\CallSummaryDTO.cs" />
     <Compile Include="Models\DTO\Notebook\NotebookDTO.cs" />
+    <Compile Include="Models\DTO\TBodyItem.cs" />
+    <Compile Include="Models\DTO\ThItem.cs" />
     <Compile Include="Models\Entities\CallSummary.cs" />
     <Compile Include="Models\DTO\Track\TrackDTO.cs" />
     <Compile Include="Models\DTO\TrackListItemDTO.cs" />
@@ -798,6 +800,8 @@
     <Content Include="Views\Tracks\Index.cshtml" />
     <Content Include="Views\Tracks\AddTrack.cshtml" />
     <Content Include="Views\Tracks\EditTrack.cshtml" />
+    <Content Include="Views\Shared\_Table.cshtml" />
+    <Content Include="Views\Tracks\_TrackDataTable.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>

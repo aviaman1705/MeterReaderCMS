@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MeterReaderCMS.Models.DTO.ThItem>
+
+
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="card mb-3">
+            <div class="card-header text-right">
+                <i class="fa fa-table"></i>
+                @ViewBag.Title
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead class="theader">
+                            <tr class="tr-header">
+                                @foreach (var item in Model)
+                                {
+                                    <th class="th-header">@item.fieldName</th>
+                                }
+                            </tr>
+                        </thead>
+                        <tbody class="tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

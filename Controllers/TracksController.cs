@@ -33,7 +33,57 @@ namespace MeterReaderCMS.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            List<ThItem> cells = new List<ThItem>();
+            cells.Add(new ThItem() { fieldName = "מחיקה" });
+            cells.Add(new ThItem() { fieldName = "עריכה" });
+            cells.Add(new ThItem() { fieldName = "רחוב" });
+            cells.Add(new ThItem() { fieldName = "מספר פנקס" });
+            cells.Add(new ThItem() { fieldName = "מזהה ייחודי" });
+
+            List<TBodyItem> items = _trackRepository.GetAll()
+                .Where(x => x.User.Username == User.Identity.Name)
+                .Select(x => new TBodyItem() { FieldName = x.NoteBook.StreetName.ToString(), Value = x.NoteBook.StreetName })
+                .ToList();
+
+
+            //  case 2:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.StreetName).ToList();
+            //else
+            //    list = list.OrderBy(c => c.StreetName).ToList();
+            //break;
+            //        case 3:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.UnCalled).ToList();
+            //else
+            //    list = list.OrderBy(c => c.UnCalled).ToList();
+            //break;
+            //        case 4:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.Called).ToList();
+            //else
+            //    list = list.OrderBy(c => c.Called).ToList();
+            //break;
+            //        case 5:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.NoteBookNumber).ToList();
+            //else
+            //    list = list.OrderBy(c => c.NoteBookNumber).ToList();
+            //break;
+            //        case 6:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.Date).ToList();
+            //else
+            //    list = list.OrderBy(c => c.Date).ToList();
+            //break;
+            //        case 7:
+            //            if (sortOrder == "desc")
+            //    list = list.OrderByDescending(c => c.Id).ToList();
+            //else
+            //    list = list.OrderBy(c => c.Id).ToList();
+            //break;
+
+            return View(cells);
         }
 
         [HttpGet]

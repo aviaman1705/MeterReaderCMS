@@ -1,4 +1,4 @@
-﻿
+﻿@model List<MeterReaderCMS.Models.DTO.ThItem>
 @using System.Configuration;
 
 @{
@@ -7,7 +7,9 @@
     var domain = ConfigurationManager.AppSettings["Domain"];
 }
 
-<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+@Html.Partial("_Table", Model);
+
+@*<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 title-section">
@@ -156,4 +158,4 @@
         });
     </script>
 
-}
+}*@
