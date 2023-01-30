@@ -80,19 +80,16 @@ namespace MeterReaderCMS.Controllers
         public ActionResult EditNotebook(int id)
         {
             try
-            {
-                //1.לטעון את פנקס                
+            {            
                 Notebook dto = _notebookRepository.Get(id);
-                //2.לבדוק האם האייטם קיים
+               
                 if (dto == null)
                 {
                     return Content("הפנקס לא קיים");
                 }
 
-                //3.למפות את רשימת המסלולים לרשימה חדשה
                 ViewBag.Tracks = LoadTracks(id);
 
-                //4.למפות את האובייקט
                 EditNotebookDTO model = Mapper.Map<EditNotebookDTO>(dto);
                 return View(model);
             }
@@ -110,21 +107,19 @@ namespace MeterReaderCMS.Controllers
         {
             try
             {
-                //1. לבדוק שהמודל עבר ולידציה
                 if (!ModelState.IsValid)
                 {
                     ViewBag.Tracks = LoadTracks(model.Id);
                     return View(model);
                 }
-                //2. בדיקה האם מספר פנקס כבר קיים
+
                 if (_notebookRepository.NumberExists(model.Id,model.Number))
                 {
                     ViewBag.Tracks = LoadTracks(model.Id);
                     ModelState.AddModelError("CustomError", "מספר פנקס כבר קיים.");
                     return View(model);
                 }
-                
-                //3. לייבא את האייטם 
+
                 Notebook dto = _notebookRepository.Get(model.Id);
                 if (dto == null)
                 {
@@ -147,7 +142,6 @@ namespace MeterReaderCMS.Controllers
                 return null;
             }
         }
-
 
         [HttpGet]
         public ActionResult DeleteBoulder(int id)

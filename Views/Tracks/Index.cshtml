@@ -1,5 +1,4 @@
-﻿@model List<MeterReaderCMS.Models.DTO.ThItem>
-@using System.Configuration;
+﻿@using System.Configuration;
 
 @{
     ViewBag.Title = "רשימת מסלולים";
@@ -7,9 +6,8 @@
     var domain = ConfigurationManager.AppSettings["Domain"];
 }
 
-@Html.Partial("_Table", Model);
 
-@*<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 title-section">
@@ -158,4 +156,4 @@
         });
     </script>
 
-}*@
+}

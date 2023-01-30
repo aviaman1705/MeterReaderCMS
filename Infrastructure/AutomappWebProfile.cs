@@ -16,35 +16,8 @@ namespace MeterReaderCMS.Infrastructure
     {
         public AutomappWebProfile()
         {
-            #region Track
-            CreateMap<CreateTrackDTO, Track>()
-               .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
-               .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled));
-
-            CreateMap<EditTrackDTO, Track>()
-               .ForMember(dest => dest.NotebookId, opt => opt.MapFrom(src => src.NoteBookID))
-                .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.UserId))
-                .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
-               .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled));
-
-            CreateMap<Track, EditTrackDTO>()
-             .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
-             .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled))
-             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)));
-
-            CreateMap<Track, TrackListItemDTO>()
-                .ForMember(dest => dest.StreetName, opt => opt.MapFrom(src => src.NoteBook.StreetName))
-                .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
-                .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled));
-
-            CreateMap<Track, SelectListItem>()
-                  .ForMember(dest => dest.Disabled, opt => opt.MapFrom(src => true))
-                  .ForMember(dest => dest.Selected, opt => opt.MapFrom(src => true))
-                  .ForMember(dest => dest.Text,
-                  opt => opt.MapFrom(src => $"{src.ElectricityMeterCalled} {src.ElectricityMeterUnCalled} {DateTime.Now.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)}"));
-            #endregion
-
             #region User
+
             CreateMap<UserDTO, User>()
                 .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
                 .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
@@ -52,12 +25,29 @@ namespace MeterReaderCMS.Infrastructure
             CreateMap<User, UserProfileDTO>()
                 .ForMember(dest => dest.EmailAddress, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.UserId)).ReverseMap();
-
-            //CreateMap<UserProfileDTO, User>()
-            //    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.EmailAddress))
-            //    .ForMember(dest => dest.UserId, opt => opt.MapFrom(src => src.Id));
             #endregion
+
+
+            #region Track
+            CreateMap<CreateTrackDTO, Track>()
+               .ForMember(dest => dest.ElectricityMeterCalled, opt => opt.MapFrom(src => src.Called))
+               .ForMember(dest => dest.ElectricityMeterUnCalled, opt => opt.MapFrom(src => src.UnCalled))
+               .ForMember(dest => dest.Date, opt => opt.MapFrom(src => DateTime.ParseExact(src.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture)));
+            
+            CreateMap<Track, EditTrackDTO>()
+             .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
+             .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled))
+             .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))).ReverseMap();
+
+            CreateMap<Track, TrackListItemDTO>()
+                .ForMember(dest => dest.NoteBookNumber, opt => opt.MapFrom(src => src.NoteBook.Number))
+                .ForMember(dest => dest.StreetName, opt => opt.MapFrom(src => src.NoteBook.StreetName))
+                .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
+                .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled));
+            #endregion
+
         }
+
         public static void Run()
         {
             Mapper.Initialize(a => { a.AddProfile<AutomappWebProfile>(); });

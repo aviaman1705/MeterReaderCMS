@@ -45,7 +45,6 @@ namespace MeterReaderCMS.Controllers
             }
         }
 
-        // POST: /Account/Login
         [HttpPost]
         public ActionResult Login(LoginUserDTO model)
         {
@@ -96,45 +95,38 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(UserDTO model)
+        public ActionResult Register(UserDTO modelDTO)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(model);
+                    return View(modelDTO);
                 }
 
-                if (!model.Password.Equals(model.ConfirmPassword))
+                if (!modelDTO.Password.Equals(modelDTO.ConfirmPassword))
                 {
                     ModelState.AddModelError("PasswordError", "הסיסמאות לא זהות");
-                    return View(model);
+                    return View(modelDTO);
                 }
 
-                if (_userRepository.GetAll().Any(x => x.Username.Equals(model.Username)))
+                if (_userRepository.GetAll().Any(x => x.Username.Equals(modelDTO.Username)))
                 {
-                    ModelState.AddModelError("UsernameError", $"שם המשתמש {model.Username} כבר קיים");
-                    model.Username = "";
-                    return View(model);
+                    ModelState.AddModelError("UsernameError", $"שם המשתמש {modelDTO.Username} כבר קיים");
+                    modelDTO.Username = "";
+                    return View(modelDTO);
                 }
 
-                User userDTO = new User()
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.EmailAddress,
-                    Username = model.Username,
-                    Password = model.Password,
-                    ActivationCode = Guid.NewGuid()
-                };
 
-                _userRepository.Add(userDTO);
-                int id = userDTO.UserId;
+                User user = Mapper.Map<User>(modelDTO);
+
+                _userRepository.Add(user);
+                int id = user.UserId;
 
                 UserRole userRoleDTO = new UserRole()
                 {
                     UserId = id,
-                    RoleId = 2
+                    RoleId = 1
                 };
 
                 _userRepository.AddUserRole(userRoleDTO);
@@ -148,8 +140,7 @@ namespace MeterReaderCMS.Controllers
                 return null;
             }
         }
-
-        // GET: /Account/Logout
+        
         [HttpGet]
         [Authorize]
         public ActionResult Logout()
@@ -192,7 +183,6 @@ namespace MeterReaderCMS.Controllers
             }
         }
 
-        //GET: /Account/user-prifile
         [HttpGet]
         [ActionName("user-profile")]
         [Authorize]
@@ -224,7 +214,6 @@ namespace MeterReaderCMS.Controllers
             }
         }
 
-        //POST: /Account/user-prifile
         [HttpPost]
         [ActionName("user-profile")]
         [Authorize]
@@ -258,34 +247,5 @@ namespace MeterReaderCMS.Controllers
                 return null;
             }
         }
-
-        //public bool SendEmail(string toEmail, string subject, string emailBody)
-        //{
-        //    try
-        //    {
-        //        string senderEmail = System.Configuration.ConfigurationManager.AppSettings["SenderEmail"].ToString(); ;
-        //        string senderPassword = System.Configuration.ConfigurationManager.AppSettings["SenderPassword"].ToString();
-
-        //        SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-        //        client.EnableSsl = true;
-        //        client.Timeout = 100000;
-        //        client.DeliveryMethod = SmtpDeliveryMethod.Network;
-        //        client.UseDefaultCredentials = false;
-        //        client.Credentials = new NetworkCredential(senderEmail, senderPassword);
-
-
-        //        MailMessage mailMessage = new MailMessage(senderEmail, toEmail, subject, emailBody);
-        //        mailMessage.IsBodyHtml = true;
-        //        mailMessage.BodyEncoding = UTF8Encoding.UTF8;
-        //        client.Send(mailMessage);
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return false;
-        //    }
-        //}
     }
 }

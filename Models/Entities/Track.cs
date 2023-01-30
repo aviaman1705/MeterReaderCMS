@@ -13,7 +13,7 @@ namespace MeterReaderCMS.Models.Entities
 
         public int Id { get; set; }
 
-        public int ElectricityMeterCalled{ get; set; }
+        public int ElectricityMeterCalled { get; set; }
 
         public int ElectricityMeterUnCalled { get; set; }
 
