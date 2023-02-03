@@ -8,6 +8,9 @@ namespace MeterReaderCMS.Models.Entities
     public class CallSummary
     {
         public int Called { get; set; }
+
+        public int UnCalled { get; set; }
+
         public string Month { get; set; }
     }
 }

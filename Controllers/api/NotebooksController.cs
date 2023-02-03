@@ -8,10 +8,11 @@ using System.Collections.Generic;
 using MeterReaderCMS.Infrastructure;
 using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Repositories.Interfaces;
-
+using System.Web.Http.Cors;
 
 namespace MeterReaderCMS.Controllers.api
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class NotebooksController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();

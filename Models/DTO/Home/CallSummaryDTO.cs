@@ -7,7 +7,8 @@ namespace MeterReaderCMS.Models.DTO.Home
 {
     public class CallSummaryDTO
     {
-        public int Called { get; set; }
-        public string Month { get; set; }
+        public int called { get; set; }
+        public int uncalled { get; set; }
+        public string month { get; set; }
     }
 }

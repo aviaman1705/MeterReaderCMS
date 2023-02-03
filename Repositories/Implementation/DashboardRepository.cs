@@ -2,6 +2,7 @@
 using MeterReaderCMS.Repositories.Interfaces;
 using System.Linq;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MeterReaderCMS.Repositories.Implementation
 {
@@ -9,9 +10,9 @@ namespace MeterReaderCMS.Repositories.Implementation
     {
         private MeterReaderDB context = new MeterReaderDB();
 
-        public List<CallSummary> GetDashboardData(string userName)
+        public async Task<List<CallSummary>> GetDashboardData(string userName)
         {
-            var dashboardData = context.Database.SqlQuery<CallSummary>("SP_GetDashboardData @UserName = {0}", userName).ToList();
+            var dashboardData = await context.Database.SqlQuery<CallSummary>("SP_GetDashboardData @UserName = {0}", userName).ToListAsync();
             return dashboardData;
         }
     }

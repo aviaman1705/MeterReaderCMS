@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Http;
@@ -20,6 +21,7 @@ namespace MeterReaderCMS
             HttpConfiguration config = GlobalConfiguration.Configuration;
 
             config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             AreaRegistration.RegisterAllAreas();
             AutomappWebProfile.Run();

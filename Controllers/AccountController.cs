@@ -9,11 +9,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using System.Web.Security;
 
 namespace MeterReaderCMS.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class AccountController : Controller
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
