@@ -23,12 +23,12 @@ function initChart(data) {
     var myLineChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: data.map(item => item.Month),
+            labels: data.map(item => item.month),
             datasets: [{
                 label: "Revenue",
                 backgroundColor: "rgba(2,117,216,1)",
                 borderColor: "rgba(2,117,216,1)",
-                data: data.map(item => item.Called),
+                data: data.map(item => item.called),
             }],
         },
         options: {
