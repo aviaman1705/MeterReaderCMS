@@ -9,10 +9,10 @@ using MeterReaderCMS.Infrastructure;
 using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Repositories.Interfaces;
 using System.Web.Http.Cors;
+using MeterReaderCMS.Models.DTO;
 
 namespace MeterReaderCMS.Controllers.api
 {
-    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class NotebooksController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -21,6 +21,25 @@ namespace MeterReaderCMS.Controllers.api
         public NotebooksController(INotebookRepository notebookRepository)
         {
             _notebookRepository = notebookRepository;
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult LoadData(PaginationDTO paginationDTO)
+        {
+            try
+            {
+                var queryable = _notebookRepository.GetAll().Take(10).ToList();
+                return Ok(queryable);
+                //await HttpContext.InsertParametersPagintionInHelper(queryable);
+                //var actors = await queryable.OrderBy(x => x.Name).Paginate(paginationDTO).ToListAsync();
+                //return mapper.Map<List<ActorDTO>>(actors);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         [CacheFilter(TimeDuration = 100)]
@@ -69,9 +88,9 @@ namespace MeterReaderCMS.Controllers.api
                     notebooks = SortFunction(iSortCol, sortOrder, notebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
                 }
 
-                var bouldersPaged = new SysDataTablePager<NotebookDTO>(notebooks, Count, Count, sEcho);
+                var notebooksPaged = new SysDataTablePager<NotebookDTO>(notebooks, Count, iDisplayLength, sEcho);
 
-                return Ok(bouldersPaged);
+                return Ok(notebooksPaged);
             }
             catch (Exception ex)
             {

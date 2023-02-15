@@ -305,6 +305,7 @@
     <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
     <Compile Include="Models\DTO\Home\CallSummaryDTO.cs" />
     <Compile Include="Models\DTO\Notebook\NotebookDTO.cs" />
+    <Compile Include="Models\DTO\PaginationDTO.cs" />
     <Compile Include="Models\DTO\TrackListItemDTO.cs" />
     <Compile Include="Models\Entities\CallSummary.cs" />
     <Compile Include="Models\DTO\Track\TrackDTO.cs" />
