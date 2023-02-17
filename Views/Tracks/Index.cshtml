@@ -33,9 +33,7 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead class="theader">
                             <tr class="tr-header">
-                                <th class="th-header">מחיקה</th>
-                                <th class="th-header">עריכה</th>
-                                <th class="th-header">תיאור</th>
+                                <th class="th-header">עריכה / מחיקה</th>
                                 <th class="th-header">לא נקרא</th>
                                 <th class="th-header">נקרא</th>
                                 <th class="th-header">תיאור</th>
@@ -80,18 +78,16 @@
                 "sAjaxDataProp": "aaData", // data property of the returned ajax which contains table data
                 "bProcessing": true,
                 "bLengthChange": false,
-                "order": [[6, 'desc']],
+                "order": [[4, 'desc']],
                 "format": 'YYYY/MM/DD',
                 "sPaginationType": "full_numbers",//pagination type
                 "aoColumnDefs": [
                     { 'bSortable': false, "width": "10%", 'aTargets': [0] },
-                    { 'bSortable': false, "width": "10%", 'aTargets': [1] },
-                    { 'bSortable': true, "width": "30%", 'aTargets': [2] },
-                    { 'bSortable': true, "width": "10%", 'aTargets': [3] },
+                    { 'bSortable': true,  "width": "10%", 'aTargets': [1] },
+                    { 'bSortable': true,  "width": "10%", 'aTargets': [2] },
+                    { 'bSortable': true,  "width": "50%", 'aTargets': [3] },
                     { 'bSortable': true, "width": "10%", 'aTargets': [4] },
-                     { 'bSortable': true, "width": "10%", 'aTargets': [5] },
-                    { 'bSortable': true, "width": "10%", 'aTargets': [6] },
-                    { 'bSortable': true, "width": "10%", 'aTargets': [7] },
+                    { 'bSortable': true, "width": "10%", 'aTargets': [5] }
                 ],
                 "aoColumns": [
                     {
@@ -103,21 +99,15 @@
                                 class="btn btn-sm btn-default"
                                 onclick='return confirm("${text}")'>
                                 <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
-                            </a>`;
-                        }
-                    },
-                    {
-                        mData: '',
-                        render: (data, type, row) => {
-                            return `<a
-                                href='../Admin/Tracks/EditTrack/${row.Id}'
-                                title="עריכה"
-                                class="btn btn-sm btn-default">
-                               <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+                            </a>
+                            <a
+                            href = '../Admin/Tracks/EditTrack/${row.Id}'
+                            title = "עריכה"
+                            class="btn btn-sm btn-default" >
+                                <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
                               </a>`;
                         }
                     },
-                    { "mData": "StreetName" },
                     { "mData": "UnCalled" },
                     { "mData": "Called" },
                     { "mData": "Desc" },
