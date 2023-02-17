@@ -59,11 +59,6 @@ namespace MeterReaderCMS.Repositories.Implementation
             context.Dispose();
         }
 
-        public List<Track> GetNotebookTracks(int id)
-        {
-            return context.Tracks.Where(x => x.NoteBook.Id == id).ToList();
-        }
-
         public List<SelectListItem> LoadNoteBooks()
         {
             var noteBooks = context.Notesbooks
@@ -80,8 +75,6 @@ namespace MeterReaderCMS.Repositories.Implementation
         public bool NumberExists(int id, int number)
         {
             return context.Notesbooks.Any(x => x.Id != id && x.Number == number);
-        }
-
-       
+        }    
     }
 }

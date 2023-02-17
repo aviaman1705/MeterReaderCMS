@@ -21,15 +21,6 @@ namespace MeterReaderCMS.Models.Entities
 
         public DateTime Date { get; set; }
 
-        public int NotebookId
-        {
-            get { return _NotebookId; }
-            set { _NotebookId = value; }
-        }
-
-        [ForeignKey("NotebookId")]
-        public virtual Notebook NoteBook { get; set; }
-
         public int UserId
         {
             get { return _UserId; }

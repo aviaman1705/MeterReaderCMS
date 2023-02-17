@@ -308,6 +308,10 @@
     <Compile Include="Migrations\202302151731466_Add desc field to tracks table.designer.cs">
       <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302170810295_remove relashionship between track and notebook.cs" />
+    <Compile Include="Migrations\202302170810295_remove relashionship between track and notebook.designer.cs">
+      <DependentUpon>202302170810295_remove relashionship between track and notebook.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\Notebook\AddBotebookDTO.cs" />
     <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
@@ -898,6 +902,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202302151731466_Add desc field to tracks table.resx">
       <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302170810295_remove relashionship between track and notebook.resx">
+      <DependentUpon>202302170810295_remove relashionship between track and notebook.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

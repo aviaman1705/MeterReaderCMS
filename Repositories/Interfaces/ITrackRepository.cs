@@ -9,6 +9,6 @@ namespace MeterReaderCMS.Repositories.Interfaces
 {
     public interface ITrackRepository : IRepository<Track, int>
     {
-         bool TrackExistsOnThisDate(DateTime time, int noteBookId);
+         
     }
 }

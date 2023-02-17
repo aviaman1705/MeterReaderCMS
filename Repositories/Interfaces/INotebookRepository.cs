@@ -9,8 +9,7 @@ using System.Web.Mvc;
 namespace MeterReaderCMS.Repositories.Interfaces
 {
     public interface INotebookRepository : IRepository<Notebook, int>
-    {
-        List<Track> GetNotebookTracks(int id);
+    {        
         bool NumberExists(int id, int number);
         List<SelectListItem> LoadNoteBooks();
     }

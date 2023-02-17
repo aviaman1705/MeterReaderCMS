@@ -65,12 +65,12 @@ namespace MeterReaderCMS.Controllers
                 }
 
                 DateTime trackDate = DateTime.ParseExact(model.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                if (_trackRepository.TrackExistsOnThisDate(trackDate, model.NoteBookID))
-                {
-                    ModelState.AddModelError("CustomError", "תאריך כבר קיים.");
-                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
-                    return View(model);
-                }
+                //if (_trackRepository.TrackExistsOnThisDate(trackDate, model.NoteBookID))
+                //{
+                //    ModelState.AddModelError("CustomError", "תאריך כבר קיים.");
+                //    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                //    return View(model);
+                //}
 
                 Track entity = Mapper.Map<Track>(model);
                 User currentUser = _userRepository.GetAll().FirstOrDefault(x => x.Username == User.Identity.Name);

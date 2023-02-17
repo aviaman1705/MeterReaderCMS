@@ -88,7 +88,7 @@ namespace MeterReaderCMS.Controllers
                     return Content("הפנקס לא קיים");
                 }
 
-                ViewBag.Tracks = LoadTracks(id);
+                //ViewBag.Tracks = LoadTracks(id);
 
                 EditNotebookDTO model = Mapper.Map<EditNotebookDTO>(dto);
                 return View(model);
@@ -109,13 +109,13 @@ namespace MeterReaderCMS.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.Tracks = LoadTracks(model.Id);
+                    //ViewBag.Tracks = LoadTracks(model.Id);
                     return View(model);
                 }
 
                 if (_notebookRepository.NumberExists(model.Id,model.Number))
                 {
-                    ViewBag.Tracks = LoadTracks(model.Id);
+                    //ViewBag.Tracks = LoadTracks(model.Id);
                     ModelState.AddModelError("CustomError", "מספר פנקס כבר קיים.");
                     return View(model);
                 }
@@ -130,7 +130,7 @@ namespace MeterReaderCMS.Controllers
                     dto = Mapper.Map<Notebook>(model);
                     _notebookRepository.Update(dto);
                     updateCache();
-                    ViewBag.Tracks = LoadTracks(dto.Id);
+                    //ViewBag.Tracks = LoadTracks(dto.Id);
                     return View(model);
                 }
             }
@@ -173,12 +173,6 @@ namespace MeterReaderCMS.Controllers
             var notebooks = new List<NotebookDTO>();
             notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().OrderByDescending(m => m.Number).ToList());
             MemoryCacher.Add(Constant.NotebookList, notebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
-        }
-
-        private List<Track> LoadTracks(int id)
-        {
-            var tracks = _notebookRepository.GetNotebookTracks(id);
-            return tracks;
         }
     }
 }

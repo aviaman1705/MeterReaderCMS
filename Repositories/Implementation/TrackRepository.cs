@@ -10,13 +10,11 @@ namespace MeterReaderCMS.Repositories.Implementation
     public class TrackRepository : ITrackRepository
     {
         private MeterReaderDB context = new MeterReaderDB();
-
         public void Add(Track item)
         {
             context.Tracks.Add(item);
             context.SaveChanges();
         }
-
         public bool Delete(int id)
         {
             bool isDeleted = false;
@@ -29,7 +27,6 @@ namespace MeterReaderCMS.Repositories.Implementation
             }
             return isDeleted;
         }
-
         public void Dispose()
         {
             context.Dispose();
@@ -39,17 +36,10 @@ namespace MeterReaderCMS.Repositories.Implementation
         {
             return context.Tracks.FirstOrDefault(x => x.Id == id);
         }
-
         public IQueryable<Track> GetAll()
         {
-            return context.Tracks.Include(x => x.NoteBook).Include(x => x.User);
+            return context.Tracks.Include(x => x.User);
         }
-
-        public bool TrackExistsOnThisDate(DateTime time, int noteBookId)
-        {
-            return GetAll().Any(x => x.Date.Year == time.Year && x.Date.Month == time.Month && x.Date.Day == time.Day && x.NotebookId == noteBookId);
-        }
-
         public bool Update(Track item)
         {
             bool isUpdated = false;
@@ -59,8 +49,7 @@ namespace MeterReaderCMS.Repositories.Implementation
                 entity.Date = item.Date;
                 entity.Desc = item.Desc;
                 entity.ElectricityMeterCalled = item.ElectricityMeterCalled;
-                entity.ElectricityMeterUnCalled = item.ElectricityMeterUnCalled;
-                entity.NotebookId = item.NotebookId;
+                entity.ElectricityMeterUnCalled = item.ElectricityMeterUnCalled;                
                 context.SaveChanges();
                 isUpdated = true;
             }
