@@ -17,6 +17,8 @@ namespace MeterReaderCMS.Models.Entities
 
         public int ElectricityMeterUnCalled { get; set; }
 
+        public string Desc { get; set; }
+
         public DateTime Date { get; set; }
 
         public int NotebookId

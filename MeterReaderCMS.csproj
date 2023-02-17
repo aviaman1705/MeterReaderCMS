@@ -300,6 +300,14 @@
     <Compile Include="Migrations\202301140653334_remove meter readers table.designer.cs">
       <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202302151127509_change number to nullable in notebooks table.cs" />
+    <Compile Include="Migrations\202302151127509_change number to nullable in notebooks table.designer.cs">
+      <DependentUpon>202302151127509_change number to nullable in notebooks table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202302151731466_Add desc field to tracks table.cs" />
+    <Compile Include="Migrations\202302151731466_Add desc field to tracks table.designer.cs">
+      <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\Notebook\AddBotebookDTO.cs" />
     <Compile Include="Models\DTO\Notebook\EditNotebookDTO.cs" />
@@ -884,6 +892,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202301140653334_remove meter readers table.resx">
       <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302151127509_change number to nullable in notebooks table.resx">
+      <DependentUpon>202302151127509_change number to nullable in notebooks table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202302151731466_Add desc field to tracks table.resx">
+      <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

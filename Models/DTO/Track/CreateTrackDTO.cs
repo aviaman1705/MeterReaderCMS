@@ -16,6 +16,10 @@ namespace MeterReaderCMS.Models.DTO.Track
         [Required(ErrorMessage = "חובה לבחור תאריך")]
         public string Date { get; set; }
 
+        [Display(Name = "תיאור")]
+        [Required(ErrorMessage = "חובה להזין תיאור")]
+        public string Desc { get; set; }
+
         [Display(Name = "נקראו")]
         public int? Called { get; set; }
 

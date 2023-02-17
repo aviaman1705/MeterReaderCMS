@@ -13,11 +13,10 @@ namespace MeterReaderCMS.Models.DTO.Notebook
         public int Id { get; set; }
 
         [Display(Name = "מספר פנקס")]
-        [Required(ErrorMessage = "חובה להזין מספר פנקס")]
-        [Range(1, int.MaxValue, ErrorMessage = "הזן ערך גדול מ- 1")]
-        public int Number { get; set; }
+        public int? Number { get; set; }
 
-        [Display(Name = "רחוב")]       
+        [Display(Name = "רחוב")]
+        [Required(ErrorMessage = "חובה להזין רחוב")]
         public string StreetName { get; set; }
         
         public virtual List<TrackDTO> Tracks { get; set; }

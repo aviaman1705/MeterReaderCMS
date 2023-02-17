@@ -14,6 +14,8 @@ namespace MeterReaderCMS.Models.DTO.Track
 
         public int ElectricityMeterUnCalled { get; set; }
 
+        public string Desc { get; set; }
+
         public DateTime Date { get; set; }
 
         public int NotebookId{ get; set; }

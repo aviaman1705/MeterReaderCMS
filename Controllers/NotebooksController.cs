@@ -54,11 +54,11 @@ namespace MeterReaderCMS.Controllers
                     return View(model);
                 }
 
-                if (_notebookRepository.GetAll().Any(x => x.Number == model.Number))
-                {
-                    ModelState.AddModelError("CustomError", "מספר פנקס כבר קיים");
-                    return View(model);
-                }
+                //if (_notebookRepository.GetAll().Any(x => x.Number == model.Number))
+                //{
+                //    ModelState.AddModelError("CustomError", "מספר פנקס כבר קיים");
+                //    return View(model);
+                //}
 
 
                 model.StreetName = !string.IsNullOrEmpty(model.StreetName) ? model.StreetName : "";

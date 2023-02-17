@@ -88,7 +88,7 @@ namespace MeterReaderCMS.Controllers.api
                     notebooks = SortFunction(iSortCol, sortOrder, notebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
                 }
 
-                var notebooksPaged = new SysDataTablePager<NotebookDTO>(notebooks, Count, iDisplayLength, sEcho);
+                var notebooksPaged = new SysDataTablePager<NotebookDTO>(notebooks, Count, Count, sEcho);
 
                 return Ok(notebooksPaged);
             }

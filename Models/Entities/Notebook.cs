@@ -10,7 +10,7 @@ namespace MeterReaderCMS.Models.Entities
 {
     public class Notebook : BaseClass
     {
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string StreetName { get; set; }
         public virtual List<Track> Tracks { get; set; }
     }

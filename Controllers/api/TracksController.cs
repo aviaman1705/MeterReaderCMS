@@ -47,7 +47,7 @@ namespace MeterReaderCMS.Controllers.api
                     var filterdTracks = tracks
                            .Where(m => m.Called.ToString().Contains(sSearch)
                            || m.Date.ToString("dd/MM/yyyy").Contains(sSearch)
-                           || m.NoteBookNumber.ToString().Contains(sSearch)
+                           || m.Desc.Contains(sSearch)
                            || m.StreetName.Contains(sSearch)
                            || m.UnCalled.ToString().Contains(sSearch)).ToList();
 
@@ -111,9 +111,9 @@ namespace MeterReaderCMS.Controllers.api
                         break;
                     case 5:
                         if (sortOrder == "desc")
-                            list = list.OrderByDescending(c => c.NoteBookNumber).ToList();
+                            list = list.OrderByDescending(c => c.Desc).ToList();
                         else
-                            list = list.OrderBy(c => c.NoteBookNumber).ToList();
+                            list = list.OrderBy(c => c.Desc).ToList();
                         break;
                     case 6:
                         if (sortOrder == "desc")
