@@ -13234,11 +13234,6 @@ div.dataTables_scrollFoot > .dataTables_scrollFootInner {
         border-top: none
     }
 
-@media screen and (max-width:767px) {
-    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
-        text-align: center
-    }
-}
 
 table.dataTable.table-sm > thead > tr > th {
     padding-right: 20px
@@ -24344,15 +24339,45 @@ table {
             table td:last-child {
                 border-bottom: 0
             }
-}
 
-@media screen and (max-width:640px) {
     footer.sticky-footer .copyright {
         padding: 0 50px 0 0 !important;
         position: relative;
         right: 65px
     }
 }
+
+
+@media screen and (max-width:767px) {
+    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+        text-align: center
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right
+    }
+}
+
+@media screen and (max-width:992px) {
+    table#dataTable {
+        font-size: 0.7rem;
+    }
+}
+
 
 :root {
     --font-family: 'Heebo',sans-serif;
