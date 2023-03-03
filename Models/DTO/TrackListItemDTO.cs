@@ -15,9 +15,7 @@ namespace MeterReaderCMS.Models.DTO
 
         public string Desc { get; set; }
 
-        public DateTime Date { get; set; }        
-
-        //public int NoteBookNumber { get; set; }
+        public DateTime Date { get; set; }                
 
         public string StreetName { get; set; }
     }

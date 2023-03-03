@@ -15,8 +15,7 @@ namespace MeterReaderCMS
             // register all your components with the container here
             // it is NOT necessary to register your controllers                    
             container.RegisterType<IDashboardRepository, DashboardRepository>();
-            container.RegisterType<IUserRepository, UserRepository>();
-            container.RegisterType<INotebookRepository, NotebookRepository>();
+            container.RegisterType<IUserRepository, UserRepository>();            
             container.RegisterType<ISearchRepository, SearchRepository>();
             container.RegisterType<ITrackRepository, TrackRepository>();
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));

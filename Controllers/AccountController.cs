@@ -148,7 +148,7 @@ namespace MeterReaderCMS.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            MemoryCacher.Delete(Constant.BoulderList);
+            //MemoryCacher.Delete(Constant.BoulderList);
             return Redirect("Login");
         }
 

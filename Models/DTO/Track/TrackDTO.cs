@@ -1,8 +1,4 @@
-﻿using MeterReaderCMS.Models.DTO.Notebook;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 
 namespace MeterReaderCMS.Models.DTO.Track
 {
@@ -16,10 +12,6 @@ namespace MeterReaderCMS.Models.DTO.Track
 
         public string Desc { get; set; }
 
-        public DateTime Date { get; set; }
-
-        public int NotebookId{ get; set; }
-        
-        public virtual NotebookDTO NoteBook { get; set; }
+        public DateTime Date { get; set; }        
     }
 }

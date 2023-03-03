@@ -7,8 +7,7 @@ using System.Web;
 namespace MeterReaderCMS.Models.Entities
 {
     public class Track
-    {
-        private int _NotebookId;
+    {        
         private int _UserId;
 
         public int Id { get; set; }

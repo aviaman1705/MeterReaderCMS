@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
@@ -14,13 +13,11 @@ namespace MeterReaderCMS.Controllers.api
     public class SearchController : ApiController
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        private ISearchRepository _searchRepository;
-        private INotebookRepository _notebookRepository;
+        private ISearchRepository _searchRepository;     
 
-        public SearchController(ISearchRepository searchRepository, INotebookRepository notebookRepository)
+        public SearchController(ISearchRepository searchRepository)
         {
-            _searchRepository = searchRepository;
-            _notebookRepository = notebookRepository;
+            _searchRepository = searchRepository;            
         }
 
         public IHttpActionResult GetSearchResult(string term)
@@ -45,16 +42,17 @@ namespace MeterReaderCMS.Controllers.api
         {
             try
             {
-                int number;
-                if (int.TryParse(item, out number))
-                {
-                    NotebookDTO itemData = Mapper.Map<NotebookDTO>(_notebookRepository.GetAll().Where(x => x.Number == number).FirstOrDefault());
-                    return Ok(itemData);
-                }
-                else
-                {
-                    return NotFound();
-                }
+                //int number;
+                //if (int.TryParse(item, out number))
+                //{
+                //    NotebookDTO itemData = Mapper.Map<NotebookDTO>(_notebookRepository.GetAll().Where(x => x.Number == number).FirstOrDefault());
+                //    return Ok(itemData);
+                //}
+                //else
+                //{
+                //    return NotFound();
+                //}
+                return NotFound();
             }
             catch (Exception ex)
             {

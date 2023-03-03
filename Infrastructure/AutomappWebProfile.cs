@@ -40,8 +40,6 @@ namespace MeterReaderCMS.Infrastructure
              .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture))).ReverseMap();
 
             CreateMap<Track, TrackListItemDTO>()
-                //.ForMember(dest => dest.NoteBookNumber, opt => opt.MapFrom(src => src.NoteBook.Number))
-                //.ForMember(dest => dest.StreetName, opt => opt.MapFrom(src => src.NoteBook.StreetName))
                 .ForMember(dest => dest.Called, opt => opt.MapFrom(src => src.ElectricityMeterCalled))
                 .ForMember(dest => dest.UnCalled, opt => opt.MapFrom(src => src.ElectricityMeterUnCalled));
             #endregion

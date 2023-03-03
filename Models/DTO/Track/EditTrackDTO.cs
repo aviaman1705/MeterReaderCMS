@@ -10,10 +10,6 @@ namespace MeterReaderCMS.Models.DTO.Track
     {
         public int Id { get; set; }
 
-        [Display(Name = "פנקס")]
-        [Required(ErrorMessage = "חובה לבחור פנקס")]
-        public int NoteBookID { get; set; }
-
         [Display(Name = "תאריך")]
         [Required(ErrorMessage = "חובה לבחור תאריך")]
         public string Date { get; set; }

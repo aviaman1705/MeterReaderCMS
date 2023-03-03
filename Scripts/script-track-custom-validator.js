@@ -22,19 +22,11 @@ $('#trackFormId').validate({
         e.closest('.help-block').remove();
     },
     rules: {
-        'NoteBookID': {
-            required: true
-        },
         'Date': {
             required: true,
             validateDate: true,
         },
     }, messages: {
-        NoteBookID:
-        {
-            required: 'חובה לבחור מספר פנקס'
-        },
-
         Date: {
             required: 'חובה לבחור תאריך'
         }

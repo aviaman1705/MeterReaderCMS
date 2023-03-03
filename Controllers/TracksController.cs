@@ -19,15 +19,13 @@ namespace MeterReaderCMS.Controllers
     public class TracksController : Controller
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-        private ITrackRepository _trackRepository;
-        private INotebookRepository _notebookRepository;
+        private ITrackRepository _trackRepository;        
         private IUserRepository _userRepository;
 
-        public TracksController(Logger logger, ITrackRepository trackRepository, INotebookRepository notebookRepository, IUserRepository userRepository)
+        public TracksController(Logger logger, ITrackRepository trackRepository, IUserRepository userRepository)
         {
             _logger = logger;
-            _trackRepository = trackRepository;
-            _notebookRepository = notebookRepository;
+            _trackRepository = trackRepository;            
             _userRepository = userRepository;
         }
 
@@ -41,7 +39,6 @@ namespace MeterReaderCMS.Controllers
         {
             try
             {
-                ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
                 return View();
             }
             catch (Exception ex)
@@ -59,18 +56,11 @@ namespace MeterReaderCMS.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                {
-                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                {                    
                     return View(model);
                 }
 
                 DateTime trackDate = DateTime.ParseExact(model.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                //if (_trackRepository.TrackExistsOnThisDate(trackDate, model.NoteBookID))
-                //{
-                //    ModelState.AddModelError("CustomError", "תאריך כבר קיים.");
-                //    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
-                //    return View(model);
-                //}
 
                 Track entity = Mapper.Map<Track>(model);
                 User currentUser = _userRepository.GetAll().FirstOrDefault(x => x.Username == User.Identity.Name);
@@ -79,8 +69,7 @@ namespace MeterReaderCMS.Controllers
                 {
                     entity.UserId = currentUser.UserId;
                     _trackRepository.Add(entity);
-                    updateCache();
-                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                    updateCache();                    
                 }
 
                 return RedirectToAction("Index");
@@ -106,8 +95,7 @@ namespace MeterReaderCMS.Controllers
                 {
                     return Content("מסלול לא קיים");
                 }
-
-                ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                
                 model = Mapper.Map<EditTrackDTO>(dto);
                 return View(model);
             }
@@ -126,8 +114,7 @@ namespace MeterReaderCMS.Controllers
             try
             {
                 if (!ModelState.IsValid)
-                {
-                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                {                    
                     return View(model);
                 }
 
@@ -143,8 +130,7 @@ namespace MeterReaderCMS.Controllers
                     dto = Mapper.Map<Track>(model);
                     dto.Date = trackDate;
                     _trackRepository.Update(dto);
-                    updateCache();
-                    ViewBag.NoteBooks = _notebookRepository.LoadNoteBooks();
+                    updateCache();                    
 
                     return View(model);
                 }
