@@ -32,12 +32,12 @@
                 <table class="table table-bordered" id="dataTable">
                     <thead class="theader">
                         <tr class="tr-header">
-                            <th class="th-header">עריכה / מחיקה</th>
-                            <th class="th-header">לא נקרא</th>
-                            <th class="th-header">נקרא</th>
-                            <th class="th-header">תיאור</th>
-                            <th class="th-header">תאריך </th>
                             <th class="th-header">מזהה ייחודי </th>
+                            <th class="th-header">תאריך </th>
+                            <th class="th-header">תיאור</th>
+                            <th class="th-header">נקרא</th>
+                            <th class="th-header">לא נקרא</th>
+                            <th class="th-header">עריכה / מחיקה</th>
                         </tr>
                     </thead>
                     <tbody class="tbody"></tbody>
@@ -55,9 +55,8 @@
 
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
 
-     <script>
+    <script>
         $(function () {
-
             var text = "האם אתה בטוח שברצונך למחוק את הפריט ?";
 
             $('#called-sum-text').text('');
@@ -69,46 +68,24 @@
                         $(row).children().addClass('className');
                 },
                 "autoWidth": false,
-                "bServerSide": true, 
-                "sAjaxSource": '@domain' + "api/Tracks/GetData", 
-                "sAjaxDataProp": "aaData", 
+                "bServerSide": true,
+                "sAjaxSource": '@domain' + "/api/Tracks/GetData",
+                "sAjaxDataProp": "aaData",
                 "bProcessing": true,
                 "bLengthChange": false,
-                "order": [[4, 'desc']],
+                "order": [[1, 'desc']],
                 "format": 'YYYY/MM/DD',
                 "sPaginationType": "full_numbers",
                 "aoColumnDefs": [
-                    { 'bSortable': false, 'aTargets': [0] },
-                    { 'bSortable': true,  'aTargets': [1] },
-                    { 'bSortable': true,  'aTargets': [2] },
-                    { 'bSortable': true,  'aTargets': [3] },
+                    { 'bSortable': true, 'aTargets': [0]},
+                    { 'bSortable': true, 'aTargets': [1]},
+                    { 'bSortable': true, 'aTargets': [2] , "width": "25%"},
+                    { 'bSortable': true, 'aTargets': [3]},
                     { 'bSortable': true, 'aTargets': [4] },
-                    { 'bSortable': true, 'aTargets': [5] }
+                    { 'bSortable': false, 'aTargets': [5] }
                 ],
                     "aoColumns": [
-                    {
-                        mData: '',
-                        render: (data, type, row) => {
-                                //<i class="fa fa-trash fa-2x" aria-hidden="true"></i>
-                            return `<a
-                                href='../Admin/Tracks/DeleteTrack/${row.Id}'
-                                title="מחיקה"
-                                class="btn btn-sm btn-default"
-                                onclick='return confirm("${text}")'>
-                          מחיקה
-                            </a>
-                            <a
-                            href = '../Admin/Tracks/EditTrack/${row.Id}'
-                            title = "עריכה"
-                            class="btn btn-sm btn-default" >
-                               עריכה
-                              </a>`;
-                                //<i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-                        }
-                  },
-                        { "mData": "UnCalled" },
-                        { "mData": "Called" },
-                        { "mData": "Desc" },
+                        { "mData": "Id" },
                         {
                             "data": "Date",
                             "render": function (data, type, row) {
@@ -121,8 +98,27 @@
                                 return (boulderDate.toString().length > 1 ? boulderDay : "0" + boulderDay) + "/" + (boulderMonth.toString().length > 1 ? boulderMonth : "0" + boulderMonth) + "/" + boulderYear;
                             }
                         },
-                        { "mData": "Id" }
-
+                        { "mData": "Desc" },
+                        { "mData": "Called" },
+                        { "mData": "UnCalled" },
+                    {
+                        mData: '',
+                        render: (data, type, row) => {
+                            return `<a
+                            href = '../Admin/Tracks/EditTrack/${row.Id}'
+                            title = "עריכה"
+                            class="btn btn-sm btn-info" >
+                               עריכה
+                              </a>
+                              <a
+                                href='../Admin/Tracks/DeleteTrack/${row.Id}'
+                                title="מחיקה"
+                                class="btn btn-sm btn-danger"
+                                onclick='return confirm("${text}")'>
+                          מחיקה
+                            </a>`;
+                        }
+                  },
                 ],
                 "language": {
                     "sSearch": "חפש",
@@ -141,7 +137,7 @@
                 }
             });
 
-            $('div.dataTables_filter input').addClass('form-control');
+            $('div.dataTables_filter input').addClass('form-control').attr('id','search-form-control');
         });
     </script>
 

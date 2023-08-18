@@ -25,7 +25,7 @@ function initChart(data) {
         data: {
             labels: data.map(item => item.month),
             datasets: [{
-                label: "Revenue",
+                label: "calls",
                 backgroundColor: "rgba(2,117,216,1)",
                 borderColor: "rgba(2,117,216,1)",
                 data: data.map(item => item.called),
@@ -47,7 +47,7 @@ function initChart(data) {
                 yAxes: [{
                     ticks: {
                         min: 0,
-                        max: 10000,
+                        max: 12000,
                         maxTicksLimit: 8
                     },
                     gridLines: {

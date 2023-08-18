@@ -86,40 +86,40 @@ namespace MeterReaderCMS.Controllers.api
 
         private List<TrackListItemDTO> SortFunction(int iSortCol, string sortOrder, List<TrackListItemDTO> list)
         {
-            if (iSortCol == 1 || iSortCol == 2 || iSortCol == 3 || iSortCol == 4 || iSortCol == 5)
+            if (iSortCol == 0 || iSortCol == 1 || iSortCol == 2 || iSortCol == 3 || iSortCol == 4)
             {
                 switch (iSortCol)
                 {
-                    case 1:
-                        if (sortOrder == "desc")
-                            list = list.OrderByDescending(c => c.UnCalled).ToList();
-                        else
-                            list = list.OrderBy(c => c.UnCalled).ToList();
-                        break;
-                    case 2:
-                        if (sortOrder == "desc")
-                            list = list.OrderByDescending(c => c.Called).ToList();
-                        else
-                            list = list.OrderBy(c => c.Called).ToList();
-                        break;
-                    case 3:
-                        if (sortOrder == "desc")
-                            list = list.OrderByDescending(c => c.Desc).ToList();
-                        else
-                            list = list.OrderBy(c => c.Desc).ToList();
-                        break;
-                    case 4:
-                        if (sortOrder == "desc")
-                            list = list.OrderByDescending(c => c.Date).ToList();
-                        else
-                            list = list.OrderBy(c => c.Date).ToList();
-                        break;
-                    case 5:
+                    case 0:
                         if (sortOrder == "desc")
                             list = list.OrderByDescending(c => c.Id).ToList();
                         else
                             list = list.OrderBy(c => c.Id).ToList();
                         break;
+                    case 1:
+                        if (sortOrder == "desc")
+                            list = list.OrderByDescending(c => c.Date).ToList();
+                        else
+                            list = list.OrderBy(c => c.Date).ToList();
+                        break;
+                    case 2:
+                        if (sortOrder == "desc")
+                            list = list.OrderByDescending(c => c.Desc).ToList();
+                        else
+                            list = list.OrderBy(c => c.Desc).ToList();
+                        break;
+                    case 3:
+                        if (sortOrder == "desc")
+                            list = list.OrderByDescending(c => c.Called).ToList();
+                        else
+                            list = list.OrderBy(c => c.Called).ToList();
+                        break;
+                    case 4:
+                        if (sortOrder == "desc")
+                            list = list.OrderByDescending(c => c.UnCalled).ToList();
+                        else
+                            list = list.OrderBy(c => c.UnCalled).ToList();
+                        break;                  
                 }
             }
 

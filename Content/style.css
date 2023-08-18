@@ -1,0 +1,10 @@
+﻿.form-buttons-section-container {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+}
+
+    .form-buttons-section-container > a, .form-buttons-section-container > input[type="submit"] {
+        margin: 0;
+    }
+        
