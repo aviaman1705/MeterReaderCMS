@@ -1,7 +1,8 @@
 ﻿@using System.Configuration;
 
 @{
-    ViewBag.Title = "רשימת מסלולים";
+
+    ViewBag.Title = "רשימת פנקסים";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var domain = ConfigurationManager.AppSettings["Domain"];
 }
@@ -17,7 +18,7 @@
 
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12 buttons-section text-right">
-        @Html.ActionLink("הוספת מסלול", "AddTrack", null, new { @class = "btn btn-info" })
+        @Html.ActionLink("הוספת פנקס", "AddNotebook", null, new { @class = "btn btn-info" })
     </div>
 </div>
 
@@ -25,7 +26,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="card mb-3">
             <div class="card-header text-right">
-                רשימת מסלולים
+                רשימת פנקסים
                 <i class="fa fa-table"></i>
             </div>
             <div class="card-body">
@@ -33,11 +34,7 @@
                     <thead class="theader">
                         <tr class="tr-header">
                             <th class="th-header">מזהה ייחודי </th>
-                            <th class="th-header">תאריך </th>
-                            <th class="th-header">מספר פנקס</th>
-                            <th class="th-header">תיאור</th>
-                            <th class="th-header">נקרא</th>
-                            <th class="th-header">לא נקרא</th>
+                            <th class="th-header">מספר</th>
                             <th class="th-header">עריכה / מחיקה</th>
                         </tr>
                     </thead>
@@ -70,55 +67,46 @@
                 },
                 "autoWidth": false,
                 "bServerSide": true,
-                "sAjaxSource": '@domain' + "/api/Tracks/GetData",
+                "sAjaxSource": '@domain' + "/api/Notebook/GetData",
                 "sAjaxDataProp": "aaData",
                 "bProcessing": true,
                 "bLengthChange": false,
-                "order": [[1, 'desc']],
+                "order": [[1, 'asc']],
                 "format": 'YYYY/MM/DD',
                 "sPaginationType": "full_numbers",
                 "aoColumnDefs": [
-                    { 'bSortable': true, 'aTargets': [0], "width": "13.70%"},
-                    { 'bSortable': true, 'aTargets': [1], "width": "13.70%"},
-                    { 'bSortable': true, 'aTargets': [2], "width": "13.70%"},
-                    { 'bSortable': true, 'aTargets': [3], "width": "13.70%"},
-                    { 'bSortable': true, 'aTargets': [4], "width": "13.70%"},
-                    { 'bSortable': true, 'aTargets': [5], "width": "13.70%"},
+                    { 'bSortable': true, 'aTargets': [0]},
+                    { 'bSortable': true, 'aTargets': [1]}
                 ],
                     "aoColumns": [
                         { "mData": "Id" },
-                        {
-                            "data": "Date",
-                            "render": function (data, type, row) {
-
-                                var today = new Date();
-                                var boulderDate = new Date(row.Date);
-                                var boulderYear = boulderDate.getFullYear().toString().substr(-2);
-                                var boulderMonth = boulderDate.getMonth() + 1;
-                                var boulderDay = boulderDate.getDate();
-                                return (boulderDate.toString().length > 1 ? boulderDay : "0" + boulderDay) + "/" + (boulderMonth.toString().length > 1 ? boulderMonth : "0" + boulderMonth) + "/" + boulderYear;
-                            }
-                        },
-                        { "mData":"NotebookNumber"},
-                        { "mData": "Desc" },
-                        { "mData": "Called" },
-                        { "mData": "UnCalled" },
+                        { "mData": "Number" },
                     {
                         mData: '',
                         render: (data, type, row) => {
-                            return `<a
-                            href = '../Admin/Tracks/EditTrack/${row.Id}'
+                            if (row.Tracks.length === 0) {
+                                return `<a
+                            href = '../Admin/Notebook/EditNotebook/${row.Id}'
                             title = "עריכה"
                             class="btn btn-sm btn-info" >
                                עריכה
                               </a>
                               <a
-                                href='../Admin/Tracks/DeleteTrack/${row.Id}'
+                                href='../Admin/Notebook/DeleteNotebook/${row.Id}'
                                 title="מחיקה"
                                 class="btn btn-sm btn-danger"
                                 onclick='return confirm("${text}")'>
                           מחיקה
                             </a>`;
+                            } else {
+                                return `<a
+                            href = '../Admin/Notebook/EditNotebook/${row.Id}'
+                            title = "עריכה"
+                            class="btn btn-sm btn-info" >
+                               עריכה
+                              </a>`;
+                            }
+
                         }
                   },
                 ],

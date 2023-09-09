@@ -17,9 +17,9 @@ namespace MeterReaderCMS.Controllers.api
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private ITrackRepository _trackRepository;
 
-        public TracksController(ITrackRepository trackRepository)
+        public TracksController(Logger logger, ITrackRepository trackRepository)
         {
-            this._trackRepository = trackRepository;
+            _trackRepository = trackRepository;            
         }
 
         [CacheFilter(TimeDuration = 100)]
@@ -27,6 +27,7 @@ namespace MeterReaderCMS.Controllers.api
         {
             try
             {
+                var res = _trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList();
                 int iSortCol = Convert.ToInt32(iSortCol_0);
                 string sortOrder = sSortDir_0;
                 var Count = 0;
@@ -47,7 +48,7 @@ namespace MeterReaderCMS.Controllers.api
                     var filterdTracks = tracks
                            .Where(m => m.Called.ToString().Contains(sSearch)
                            || m.Date.ToString("dd/MM/yyyy").Contains(sSearch)
-                           || m.Desc.Contains(sSearch)                           
+                           || m.Desc.Contains(sSearch)
                            || m.UnCalled.ToString().Contains(sSearch)).ToList();
 
                     MemoryCacher.Add(Constant.TrackList, filterdTracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
@@ -86,7 +87,7 @@ namespace MeterReaderCMS.Controllers.api
 
         private List<TrackListItemDTO> SortFunction(int iSortCol, string sortOrder, List<TrackListItemDTO> list)
         {
-            if (iSortCol == 0 || iSortCol == 1 || iSortCol == 2 || iSortCol == 3 || iSortCol == 4)
+            if (iSortCol == 0 || iSortCol == 1 || iSortCol == 2 || iSortCol == 3 || iSortCol == 4 || iSortCol == 5)
             {
                 switch (iSortCol)
                 {
@@ -104,26 +105,32 @@ namespace MeterReaderCMS.Controllers.api
                         break;
                     case 2:
                         if (sortOrder == "desc")
+                            list = list.OrderByDescending(c => c.NotebookNumber).ToList();
+                        else
+                            list = list.OrderBy(c => c.NotebookNumber).ToList();
+                        break;
+                    case 3:
+                        if (sortOrder == "desc")
                             list = list.OrderByDescending(c => c.Desc).ToList();
                         else
                             list = list.OrderBy(c => c.Desc).ToList();
                         break;
-                    case 3:
+                    case 4:
                         if (sortOrder == "desc")
                             list = list.OrderByDescending(c => c.Called).ToList();
                         else
                             list = list.OrderBy(c => c.Called).ToList();
                         break;
-                    case 4:
+                    case 5:
                         if (sortOrder == "desc")
                             list = list.OrderByDescending(c => c.UnCalled).ToList();
                         else
                             list = list.OrderBy(c => c.UnCalled).ToList();
-                        break;                  
+                        break;
                 }
             }
 
             return list;
-        }
+        }        
     }
 }

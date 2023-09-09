@@ -31,14 +31,13 @@ namespace MeterReaderCMS.Repositories.Implementation
         {
             context.Dispose();
         }
-
         public Track Get(int id)
         {
             return context.Tracks.FirstOrDefault(x => x.Id == id);
         }
         public IQueryable<Track> GetAll()
         {
-            return context.Tracks.Include(x => x.User);
+            return context.Tracks.Include(x => x.User).Include(x => x.Notebook);
         }
         public bool Update(Track item)
         {
@@ -47,9 +46,9 @@ namespace MeterReaderCMS.Repositories.Implementation
             if (entity != null)
             {
                 entity.Date = item.Date;
-                entity.Desc = item.Desc;
+                entity.Desc = !string.IsNullOrEmpty(item.Desc) ? item.Desc : entity.Desc;
                 entity.ElectricityMeterCalled = item.ElectricityMeterCalled;
-                entity.ElectricityMeterUnCalled = item.ElectricityMeterUnCalled;                
+                entity.ElectricityMeterUnCalled = item.ElectricityMeterUnCalled;
                 context.SaveChanges();
                 isUpdated = true;
             }

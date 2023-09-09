@@ -223,10 +223,14 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\api\AccountController.cs" />
     <Compile Include="Controllers\api\HomeController.cs" />
+    <Compile Include="Controllers\api\NotebookController.cs" />
     <Compile Include="Controllers\api\SearchController.cs" />
+    <Compile Include="Controllers\api\StreetController.cs" />
     <Compile Include="Controllers\api\TracksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotebookController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\StreetController.cs" />
     <Compile Include="Controllers\TracksController.cs" />
     <Compile Include="Extensions\IntHelpers.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,85 +245,22 @@
     <Compile Include="Infrastructure\CacheFilter.cs" />
     <Compile Include="Infrastructure\Constant.cs" />
     <Compile Include="Infrastructure\MemoryCacher.cs" />
-    <Compile Include="Migrations\202209051013518_init db.cs" />
-    <Compile Include="Migrations\202209051013518_init db.designer.cs">
-      <DependentUpon>202209051013518_init db.cs</DependentUpon>
+    <Compile Include="Migrations\202309051536260_Init db.cs" />
+    <Compile Include="Migrations\202309051536260_Init db.designer.cs">
+      <DependentUpon>202309051536260_Init db.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202209051017443_create notes books table.cs" />
-    <Compile Include="Migrations\202209051017443_create notes books table.designer.cs">
-      <DependentUpon>202209051017443_create notes books table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209061023296_add left column and delete total column from meter reader table.cs" />
-    <Compile Include="Migrations\202209061023296_add left column and delete total column from meter reader table.designer.cs">
-      <DependentUpon>202209061023296_add left column and delete total column from meter reader table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209170846515_add user fk in meters readers table.cs" />
-    <Compile Include="Migrations\202209170846515_add user fk in meters readers table.designer.cs">
-      <DependentUpon>202209170846515_add user fk in meters readers table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209211322131_set default value for UnCalled and Left fields.cs" />
-    <Compile Include="Migrations\202209211322131_set default value for UnCalled and Left fields.designer.cs">
-      <DependentUpon>202209211322131_set default value for UnCalled and Left fields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209270841050_change called and Uncalled Fields From Int To Decimal.cs" />
-    <Compile Include="Migrations\202209270841050_change called and Uncalled Fields From Int To Decimal.designer.cs">
-      <DependentUpon>202209270841050_change called and Uncalled Fields From Int To Decimal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209301247180_remove both business and charges tables.cs" />
-    <Compile Include="Migrations\202209301247180_remove both business and charges tables.designer.cs">
-      <DependentUpon>202209301247180_remove both business and charges tables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202211251142115_add street name to notebooks table.cs" />
-    <Compile Include="Migrations\202211251142115_add street name to notebooks table.designer.cs">
-      <DependentUpon>202211251142115_add street name to notebooks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202212291358214_change Called and UnCalled fields to int.cs" />
-    <Compile Include="Migrations\202212291358214_change Called and UnCalled fields to int.designer.cs">
-      <DependentUpon>202212291358214_change Called and UnCalled fields to int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202212291458424_change default value  to street name field.cs" />
-    <Compile Include="Migrations\202212291458424_change default value  to street name field.designer.cs">
-      <DependentUpon>202212291458424_change default value  to street name field.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301011615280_create tacks table.cs" />
-    <Compile Include="Migrations\202301011615280_create tacks table.designer.cs">
-      <DependentUpon>202301011615280_create tacks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301011628376_change tacks table fields.cs" />
-    <Compile Include="Migrations\202301011628376_change tacks table fields.designer.cs">
-      <DependentUpon>202301011628376_change tacks table fields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301011818558_add date field to tracks table.cs" />
-    <Compile Include="Migrations\202301011818558_add date field to tracks table.designer.cs">
-      <DependentUpon>202301011818558_add date field to tracks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301030047342_add user foreign key to tracks table.cs" />
-    <Compile Include="Migrations\202301030047342_add user foreign key to tracks table.designer.cs">
-      <DependentUpon>202301030047342_add user foreign key to tracks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202301140653334_remove meter readers table.cs" />
-    <Compile Include="Migrations\202301140653334_remove meter readers table.designer.cs">
-      <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202302151127509_change number to nullable in notebooks table.cs" />
-    <Compile Include="Migrations\202302151127509_change number to nullable in notebooks table.designer.cs">
-      <DependentUpon>202302151127509_change number to nullable in notebooks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202302151731466_Add desc field to tracks table.cs" />
-    <Compile Include="Migrations\202302151731466_Add desc field to tracks table.designer.cs">
-      <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202302170810295_remove relashionship between track and notebook.cs" />
-    <Compile Include="Migrations\202302170810295_remove relashionship between track and notebook.designer.cs">
-      <DependentUpon>202302170810295_remove relashionship between track and notebook.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303030943249_remove notebooks table.cs" />
-    <Compile Include="Migrations\202303030943249_remove notebooks table.designer.cs">
-      <DependentUpon>202303030943249_remove notebooks table.cs</DependentUpon>
+    <Compile Include="Migrations\202309091041047_Change rel between tracks and notebooks to one to many.cs" />
+    <Compile Include="Migrations\202309091041047_Change rel between tracks and notebooks to one to many.designer.cs">
+      <DependentUpon>202309091041047_Change rel between tracks and notebooks to one to many.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\Home\CallSummaryDTO.cs" />
+    <Compile Include="Models\DTO\Notebook\NotebookDTO.cs" />
     <Compile Include="Models\DTO\PaginationDTO.cs" />
+    <Compile Include="Models\DTO\Street\StreetDTO.cs" />
+    <Compile Include="Models\DTO\Track\TrackNotebookDTO.cs" />
+    <Compile Include="Models\Entities\Notebook.cs" />
+    <Compile Include="Models\Entities\Street.cs" />
     <Compile Include="Models\DTO\TrackListItemDTO.cs" />
     <Compile Include="Models\Entities\CallSummary.cs" />
     <Compile Include="Models\DTO\Track\TrackDTO.cs" />
@@ -331,6 +272,7 @@
     <Compile Include="Models\Entities\Role.cs" />
     <Compile Include="Models\Entities\SearchItem.cs" />
     <Compile Include="Models\Entities\Track.cs" />
+    <Compile Include="Models\Entities\TrackNotebook.cs" />
     <Compile Include="Models\Entities\User.cs" />
     <Compile Include="Models\Entities\UserRole.cs" />
     <Compile Include="Models\DTO\Search\SearchItemDTO.cs" />
@@ -342,12 +284,16 @@
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementation\DashboardRepository.cs" />
+    <Compile Include="Repositories\Implementation\NotebookRepository.cs" />
     <Compile Include="Repositories\Implementation\SearchRepository.cs" />
+    <Compile Include="Repositories\Implementation\StreetRepository.cs" />
     <Compile Include="Repositories\Implementation\TrackRepository.cs" />
     <Compile Include="Repositories\Implementation\UserRepository.cs" />
     <Compile Include="Repositories\Interfaces\IDashboardRepository.cs" />
+    <Compile Include="Repositories\Interfaces\INotebookRepository.cs" />
     <Compile Include="Repositories\Interfaces\IRepository.cs" />
     <Compile Include="Repositories\Interfaces\ISearchRepository.cs" />
+    <Compile Include="Repositories\Interfaces\IStreetRepository.cs" />
     <Compile Include="Repositories\Interfaces\ITrackRepository.cs" />
     <Compile Include="Repositories\Interfaces\IUserRepository.cs" />
   </ItemGroup>
@@ -1521,7 +1467,6 @@
     <Content Include="Images\sort_both.png" />
     <Content Include="Images\sort_desc.png" />
     <Content Include="Images\status.gif" />
-    <Content Include="index.html" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\eicons.eot" />
     <Content Include="fonts\eicons.ttf" />
@@ -2133,6 +2078,12 @@
     <Content Include="Views\Tracks\AddTrack.cshtml" />
     <Content Include="Views\Tracks\EditTrack.cshtml" />
     <Content Include="Views\Shared\_Table.cshtml" />
+    <Content Include="Views\Street\Index.cshtml" />
+    <Content Include="Views\Street\EditStreet.cshtml" />
+    <Content Include="Views\Street\AddStreet.cshtml" />
+    <Content Include="Views\Notebook\AddNotebook.cshtml" />
+    <Content Include="Views\Notebook\Index.cshtml" />
+    <Content Include="Views\Notebook\EditNotebook.cshtml" />
     <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
@@ -2170,62 +2121,11 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202209051013518_init db.resx">
-      <DependentUpon>202209051013518_init db.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202309051536260_Init db.resx">
+      <DependentUpon>202309051536260_Init db.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209051017443_create notes books table.resx">
-      <DependentUpon>202209051017443_create notes books table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209061023296_add left column and delete total column from meter reader table.resx">
-      <DependentUpon>202209061023296_add left column and delete total column from meter reader table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209170846515_add user fk in meters readers table.resx">
-      <DependentUpon>202209170846515_add user fk in meters readers table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209211322131_set default value for UnCalled and Left fields.resx">
-      <DependentUpon>202209211322131_set default value for UnCalled and Left fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209270841050_change called and Uncalled Fields From Int To Decimal.resx">
-      <DependentUpon>202209270841050_change called and Uncalled Fields From Int To Decimal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209301247180_remove both business and charges tables.resx">
-      <DependentUpon>202209301247180_remove both business and charges tables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202211251142115_add street name to notebooks table.resx">
-      <DependentUpon>202211251142115_add street name to notebooks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202212291358214_change Called and UnCalled fields to int.resx">
-      <DependentUpon>202212291358214_change Called and UnCalled fields to int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202212291458424_change default value  to street name field.resx">
-      <DependentUpon>202212291458424_change default value  to street name field.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301011615280_create tacks table.resx">
-      <DependentUpon>202301011615280_create tacks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301011628376_change tacks table fields.resx">
-      <DependentUpon>202301011628376_change tacks table fields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301011818558_add date field to tracks table.resx">
-      <DependentUpon>202301011818558_add date field to tracks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301030047342_add user foreign key to tracks table.resx">
-      <DependentUpon>202301030047342_add user foreign key to tracks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202301140653334_remove meter readers table.resx">
-      <DependentUpon>202301140653334_remove meter readers table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302151127509_change number to nullable in notebooks table.resx">
-      <DependentUpon>202302151127509_change number to nullable in notebooks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302151731466_Add desc field to tracks table.resx">
-      <DependentUpon>202302151731466_Add desc field to tracks table.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202302170810295_remove relashionship between track and notebook.resx">
-      <DependentUpon>202302170810295_remove relashionship between track and notebook.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303030943249_remove notebooks table.resx">
-      <DependentUpon>202303030943249_remove notebooks table.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202309091041047_Change rel between tracks and notebooks to one to many.resx">
+      <DependentUpon>202309091041047_Change rel between tracks and notebooks to one to many.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

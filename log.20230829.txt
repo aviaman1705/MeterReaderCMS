@@ -1,0 +1,60 @@
+2023-08-29 21:47:12.4050|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-08-29 21:47:12.4639|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-08-29 21:47:12.4639|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 29-Aug-23 9:47:12 PM
+2023-08-29 21:47:21.3207|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 21:48:09.5051|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 9:48:09 PM
+2023-08-29 21:48:09.5051|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 21:48:09.5789|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 21:56:49.0971|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 21:57:50.7876|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:10:13.9704|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:10:22.1647|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:10:22 PM
+2023-08-29 22:10:22.1647|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:10:22.3328|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:10:32.6209|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:10:32 PM
+2023-08-29 22:10:32.6209|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:10:32.6209|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:10:34.9962|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:10:34 PM
+2023-08-29 22:10:34.9962|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:10:34.9962|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:10:36.0357|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:10:36 PM
+2023-08-29 22:10:36.0357|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:10:36.0357|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:12:17.1588|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:17:21.1533|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:17:56.1715|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:17:56 PM
+2023-08-29 22:17:56.1715|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:17:56.2548|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:19:13.3223|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:19:13 PM
+2023-08-29 22:19:13.3223|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:19:13.3223|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:19:20.9170|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:19:23.2318|ERROR|MeterReaderCMS.Controllers.api.StreetController|GetData() 29-Aug-23 10:19:23 PM
+2023-08-29 22:19:23.2318|ERROR|MeterReaderCMS.Controllers.api.StreetController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.StreetController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\StreetController.cs:line 68
+2023-08-29 22:19:23.2318|ERROR|MeterReaderCMS.Controllers.api.StreetController|==============================
+2023-08-29 22:23:46.3324|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-08-29 22:23:51.1016|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data

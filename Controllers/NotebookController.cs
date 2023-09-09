@@ -1,34 +1,27 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Helper;
 using MeterReaderCMS.Infrastructure;
-using MeterReaderCMS.Models.DTO;
-using MeterReaderCMS.Models.DTO.Track;
+using MeterReaderCMS.Models.DTO.Notebook;
 using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+
 
 namespace MeterReaderCMS.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class TracksController : Controller
+    public class NotebookController : Controller
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-        private ITrackRepository _trackRepository;
         private INotebookRepository _notebookRepository;
-        private IUserRepository _userRepository;
 
-        public TracksController(Logger logger, ITrackRepository trackRepository, INotebookRepository notebookRepository, IUserRepository userRepository)
+        public NotebookController(Logger logger, INotebookRepository notebookRepository)
         {
             _logger = logger;
-            _trackRepository = trackRepository;
             _notebookRepository = notebookRepository;
-            _userRepository = userRepository;
         }
 
         public ActionResult Index()
@@ -37,16 +30,15 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddTrack()
+        public ActionResult AddNotebook()
         {
             try
             {
-                ViewBag.NoteBooks = LoadNotebooks();
                 return View();
             }
             catch (Exception ex)
             {
-                _logger.Error($"AddTrack() {DateTime.Now}");
+                _logger.Error($"AddNotebook() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -54,31 +46,33 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddTrack([Bind(Exclude = "Id")] CreateTrackDTO model)
+        public ActionResult AddNotebook([Bind(Exclude = "Id")] NotebookDTO model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.NoteBooks = LoadNotebooks();
                     return View(model);
                 }
 
-                Track entity = Mapper.Map<Track>(model);
-                User currentUser = _userRepository.GetAll().FirstOrDefault(x => x.Username == User.Identity.Name);
-
-                if (currentUser != null)
+                Notebook entity = Mapper.Map<Notebook>(model);
+                if (!_notebookRepository.NotebookExsist(entity.Number))
                 {
-                    entity.UserId = currentUser.UserId;
-                    _trackRepository.Add(entity);
+
+                    _notebookRepository.Add(entity);
                     updateCache();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("CustomError", "לא ניתן להוסיף מספר פנקס שכבר קיים.");
+                    return View();
                 }
 
-                return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                _logger.Error($"AddTrack() {DateTime.Now}");
+                _logger.Error($"AddNotebook() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -86,25 +80,24 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditTrack(int id)
+        public ActionResult EditNotebook(int id)
         {
             try
             {
-                EditTrackDTO model;
-                Track dto = _trackRepository.Get(id);
+                NotebookDTO model;
+                Notebook dto = _notebookRepository.Get(id);
 
                 if (dto == null)
                 {
                     return Content("מסלול לא קיים");
                 }
 
-                model = Mapper.Map<EditTrackDTO>(dto);
-                ViewBag.NoteBooks = LoadNotebooks();
+                model = Mapper.Map<NotebookDTO>(dto);
                 return View(model);
             }
             catch (Exception ex)
             {
-                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error($"EditNotebook() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -112,37 +105,31 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditTrack(EditTrackDTO model)
+        public ActionResult EditNotebook(NotebookDTO model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.NoteBooks = LoadNotebooks();
                     return View(model);
                 }
 
-                DateTime trackDate = DateTime.ParseExact(model.Date, "dd/MM/yyyy", null);
-                Track dto = _trackRepository.Get(model.Id);
-
-                if (dto == null)
+                if (_notebookRepository.GetAll().Any(x => x.Number == model.Number && x.Id != model.Id))
                 {
-                    return Content("המסלול לא קיים");
+                    ModelState.AddModelError("CustomError", "לא ניתן לשנות למספר פנקס שכבר קיים.");
+                    return View(model);
                 }
                 else
                 {
-                    dto = Mapper.Map<Track>(model);
-                    dto.Date = trackDate;
-                    _trackRepository.Update(dto);
-                    ViewBag.NoteBooks = LoadNotebooks();
+                    Notebook dto = Mapper.Map<Notebook>(model);
+                    _notebookRepository.Update(dto);
                     updateCache();
-
                     return View(model);
                 }
             }
             catch (Exception ex)
             {
-                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error($"EditNotebook() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -150,36 +137,29 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteTrack(int id)
+        public ActionResult DeleteNotebook(int id)
         {
             try
             {
-                _trackRepository.Delete(id);
+                _notebookRepository.Delete(id);
                 updateCache();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                _logger.Error($"DeleteTrack() {DateTime.Now}");
+                _logger.Error($"DeleteNotebook() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
             }
         }
 
-        private List<SelectListItem> LoadNotebooks()
-        {
-            var notebooks = _notebookRepository.GetAll().OrderBy(g => g.Number).ToList();
-            return Mapper.Map<List<SelectListItem>>(notebooks).ToList();
-        }
-
         private void updateCache()
         {
-
-            Utilities.updateCache<TrackListItemDTO>(
-                         Constant.TrackList,
+            Utilities.updateCache<NotebookDTO>(
+                         Constant.NotebookList,
                          Constant.CacheTime,
-                         Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().OrderByDescending(m => m.Date).ToList()));
+                         Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().OrderBy(m => m.Number).ToList()));
         }
     }
 }

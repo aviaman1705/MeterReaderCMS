@@ -7,9 +7,7 @@ using System.Web;
 namespace MeterReaderCMS.Models.Entities
 {
     public class Track
-    {        
-        private int _UserId;
-
+    {
         public int Id { get; set; }
 
         public int ElectricityMeterCalled { get; set; }
@@ -20,13 +18,14 @@ namespace MeterReaderCMS.Models.Entities
 
         public DateTime Date { get; set; }
 
-        public int UserId
-        {
-            get { return _UserId; }
-            set { _UserId = value; }
-        }
+        public int UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
+
+        public int NotebookId { get; set; }
+
+        [ForeignKey("NotebookId")]
+        public virtual Notebook Notebook { get; set; }
     }
 }

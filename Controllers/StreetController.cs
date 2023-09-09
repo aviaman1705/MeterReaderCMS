@@ -1,34 +1,26 @@
 ﻿using AutoMapper;
 using MeterReaderCMS.Helper;
 using MeterReaderCMS.Infrastructure;
-using MeterReaderCMS.Models.DTO;
-using MeterReaderCMS.Models.DTO.Track;
+using MeterReaderCMS.Models.DTO.Street;
 using MeterReaderCMS.Models.Entities;
 using MeterReaderCMS.Repositories.Interfaces;
 using NLog;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace MeterReaderCMS.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class TracksController : Controller
+    public class StreetController : Controller
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();
-        private ITrackRepository _trackRepository;
-        private INotebookRepository _notebookRepository;
-        private IUserRepository _userRepository;
+        private IStreetRepository _streetRepository;
 
-        public TracksController(Logger logger, ITrackRepository trackRepository, INotebookRepository notebookRepository, IUserRepository userRepository)
+        public StreetController(Logger logger, IStreetRepository streetRepository)
         {
             _logger = logger;
-            _trackRepository = trackRepository;
-            _notebookRepository = notebookRepository;
-            _userRepository = userRepository;
+            _streetRepository = streetRepository;
         }
 
         public ActionResult Index()
@@ -37,16 +29,15 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult AddTrack()
+        public ActionResult AddStreet()
         {
             try
             {
-                ViewBag.NoteBooks = LoadNotebooks();
                 return View();
             }
             catch (Exception ex)
             {
-                _logger.Error($"AddTrack() {DateTime.Now}");
+                _logger.Error($"AddStreet() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -54,31 +45,24 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddTrack([Bind(Exclude = "Id")] CreateTrackDTO model)
+        public ActionResult AddStreet([Bind(Exclude = "Id")] StreetDTO model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.NoteBooks = LoadNotebooks();
                     return View(model);
                 }
 
-                Track entity = Mapper.Map<Track>(model);
-                User currentUser = _userRepository.GetAll().FirstOrDefault(x => x.Username == User.Identity.Name);
-
-                if (currentUser != null)
-                {
-                    entity.UserId = currentUser.UserId;
-                    _trackRepository.Add(entity);
-                    updateCache();
-                }
+                Street entity = Mapper.Map<Street>(model);
+                _streetRepository.Add(entity);
+                updateCache();
 
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                _logger.Error($"AddTrack() {DateTime.Now}");
+                _logger.Error($"AddStreet() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -86,25 +70,24 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditTrack(int id)
+        public ActionResult EditStreet(int id)
         {
             try
             {
-                EditTrackDTO model;
-                Track dto = _trackRepository.Get(id);
+                StreetDTO model;
+                Street dto = _streetRepository.Get(id);
 
                 if (dto == null)
                 {
                     return Content("מסלול לא קיים");
                 }
 
-                model = Mapper.Map<EditTrackDTO>(dto);
-                ViewBag.NoteBooks = LoadNotebooks();
+                model = Mapper.Map<StreetDTO>(dto);
                 return View(model);
             }
             catch (Exception ex)
             {
-                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error($"EditStreet() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -112,29 +95,25 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditTrack(EditTrackDTO model)
+        public ActionResult EditStreet(StreetDTO model)
         {
             try
             {
                 if (!ModelState.IsValid)
                 {
-                    ViewBag.NoteBooks = LoadNotebooks();
                     return View(model);
                 }
 
-                DateTime trackDate = DateTime.ParseExact(model.Date, "dd/MM/yyyy", null);
-                Track dto = _trackRepository.Get(model.Id);
-
+                Street dto = _streetRepository.Get(model.Id);
                 if (dto == null)
                 {
                     return Content("המסלול לא קיים");
                 }
                 else
                 {
-                    dto = Mapper.Map<Track>(model);
-                    dto.Date = trackDate;
-                    _trackRepository.Update(dto);
-                    ViewBag.NoteBooks = LoadNotebooks();
+                    dto = Mapper.Map<Street>(model);
+
+                    _streetRepository.Update(dto);
                     updateCache();
 
                     return View(model);
@@ -142,7 +121,7 @@ namespace MeterReaderCMS.Controllers
             }
             catch (Exception ex)
             {
-                _logger.Error($"EditTrack() {DateTime.Now}");
+                _logger.Error($"EditStreet() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
@@ -150,36 +129,29 @@ namespace MeterReaderCMS.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteTrack(int id)
+        public ActionResult DeleteStreet(int id)
         {
             try
             {
-                _trackRepository.Delete(id);
+                _streetRepository.Delete(id);
                 updateCache();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
-                _logger.Error($"DeleteTrack() {DateTime.Now}");
+                _logger.Error($"DeleteStreet() {DateTime.Now}");
                 _logger.Error(ex.Message);
                 _logger.Error("==============================");
                 return null;
             }
         }
 
-        private List<SelectListItem> LoadNotebooks()
-        {
-            var notebooks = _notebookRepository.GetAll().OrderBy(g => g.Number).ToList();
-            return Mapper.Map<List<SelectListItem>>(notebooks).ToList();
-        }
-
         private void updateCache()
         {
-
-            Utilities.updateCache<TrackListItemDTO>(
-                         Constant.TrackList,
+            Utilities.updateCache<StreetDTO>(
+                         Constant.StreetList,
                          Constant.CacheTime,
-                         Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().OrderByDescending(m => m.Date).ToList()));
+                         Mapper.Map<List<StreetDTO>>(_streetRepository.GetAll().OrderBy(m => m.Title).ToList()));
         }
     }
 }

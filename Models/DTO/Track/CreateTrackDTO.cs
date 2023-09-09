@@ -13,14 +13,17 @@ namespace MeterReaderCMS.Models.DTO.Track
         public string Date { get; set; }
 
         [Display(Name = "תיאור")]
-        [Required(ErrorMessage = "חובה להזין תיאור")]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        public string Desc { get; set; }
+        public string Desc { get;    set; }
 
         [Display(Name = "נקראו")]
         public int? Called { get; set; }
 
         [Display(Name = "נקראו לא")]
         public int? UnCalled { get; set; }
+
+        [Display(Name = "מספר פנקס")]
+        [Required(ErrorMessage = "חובה לבחור מספר פנקס")]
+        public int NotebookId { get; set; }
+        public int UserId { get; set; }
     }
 }

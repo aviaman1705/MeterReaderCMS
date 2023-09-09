@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MeterReaderCMS.Repositories.Interfaces
 {
-    public interface ITrackRepository : IRepository<Track, int>
+    public interface IStreetRepository : IRepository<Street, int>
     {
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace MeterReaderCMS.Repositories.Interfaces
 {
-    public interface ITrackRepository : IRepository<Track, int>
+    public interface INotebookRepository : IRepository<Notebook, int>
     {
+        bool NotebookExsist(int number);
     }
 }

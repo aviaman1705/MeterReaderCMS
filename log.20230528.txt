@@ -1,6 +1,0 @@
-2023-05-28 15:36:31.0998|INFO|MeterReaderCMS.Controllers.AccountController|Login
-2023-05-28 15:36:31.1524|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
-2023-05-28 15:36:31.1524|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 28-May-23 3:36:31 PM
-2023-05-28 15:43:24.5480|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
-2023-05-28 15:53:07.1196|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
-2023-05-28 15:53:52.9990|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data

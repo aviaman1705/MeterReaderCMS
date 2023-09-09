@@ -1,0 +1,242 @@
+2023-09-06 20:47:52.0758|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-09-06 20:47:52.1262|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-09-06 20:47:52.1262|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 06-Sep-23 8:47:52 PM
+2023-09-06 20:47:56.1423|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-09-06 20:56:03.4404|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 06-Sep-23 8:56:03 PM
+2023-09-06 20:56:03.4404|ERROR|MeterReaderCMS.Controllers.api.NotebookController|AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[MeterReaderCMS.Models.Entities.Notebook, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[MeterReaderCMS.Models.DTO.Notebook.NotebookDTO, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Type Map configuration:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Destination Member:
+TrackNotebooks
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Type Map configuration:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Destination Member:
+Notebook
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+============================================================================================
+AutoMapper created this type map for you, but your types cannot be mapped using the current configuration.
+Notebook -> TrackNotebookDTO (Destination member list)
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO (Destination member list)
+
+Unmapped properties:
+Track
+Notebook
+Desc
+
+   at AutoMapper.ConfigurationValidator.AssertConfigurationIsValid(IEnumerable`1 typeMaps) in C:\projects\automapper\src\AutoMapper\ConfigurationValidator.cs:line 28
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\MapperConfiguration.cs:line 281
+   at AutoMapper.ResolutionContext.ValidateMap(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\ResolutionContext.cs:line 120
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 211
+   at AutoMapper.Mapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 76
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 64
+2023-09-06 20:56:03.5990|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-09-06 20:56:16.9574|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 06-Sep-23 8:56:16 PM
+2023-09-06 20:56:16.9574|ERROR|MeterReaderCMS.Controllers.api.NotebookController|AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[MeterReaderCMS.Models.Entities.Notebook, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[MeterReaderCMS.Models.DTO.Notebook.NotebookDTO, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Type Map configuration:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Destination Member:
+TrackNotebooks
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Type Map configuration:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Destination Member:
+Notebook
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+============================================================================================
+AutoMapper created this type map for you, but your types cannot be mapped using the current configuration.
+Notebook -> TrackNotebookDTO (Destination member list)
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO (Destination member list)
+
+Unmapped properties:
+Track
+Notebook
+Desc
+
+   at AutoMapper.ConfigurationValidator.AssertConfigurationIsValid(IEnumerable`1 typeMaps) in C:\projects\automapper\src\AutoMapper\ConfigurationValidator.cs:line 28
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\MapperConfiguration.cs:line 281
+   at AutoMapper.ResolutionContext.ValidateMap(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\ResolutionContext.cs:line 120
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 211
+   at AutoMapper.Mapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 76
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 64
+2023-09-06 20:56:16.9574|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-09-06 20:57:56.7728|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-09-06 21:06:08.5347|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-09-06 21:06:08.5861|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-09-06 21:06:08.5861|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 06-Sep-23 9:06:08 PM
+2023-09-06 21:06:13.0991|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-09-06 21:06:22.3397|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 06-Sep-23 9:06:22 PM
+2023-09-06 21:06:22.3397|ERROR|MeterReaderCMS.Controllers.api.NotebookController|AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[MeterReaderCMS.Models.Entities.Notebook, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[MeterReaderCMS.Models.DTO.Notebook.NotebookDTO, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Type Map configuration:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Destination Member:
+TrackNotebooks
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Type Map configuration:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Destination Member:
+Notebook
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+============================================================================================
+AutoMapper created this type map for you, but your types cannot be mapped using the current configuration.
+Notebook -> TrackNotebookDTO (Destination member list)
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO (Destination member list)
+
+Unmapped properties:
+Track
+Notebook
+Desc
+
+   at AutoMapper.ConfigurationValidator.AssertConfigurationIsValid(IEnumerable`1 typeMaps) in C:\projects\automapper\src\AutoMapper\ConfigurationValidator.cs:line 28
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\MapperConfiguration.cs:line 281
+   at AutoMapper.ResolutionContext.ValidateMap(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\ResolutionContext.cs:line 120
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 211
+   at AutoMapper.Mapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 76
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 64
+2023-09-06 21:06:22.4974|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-09-06 21:06:30.1777|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 06-Sep-23 9:06:30 PM
+2023-09-06 21:06:30.1777|ERROR|MeterReaderCMS.Controllers.api.NotebookController|AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> List`1
+System.Collections.Generic.List`1[[MeterReaderCMS.Models.Entities.Notebook, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.List`1[[MeterReaderCMS.Models.DTO.Notebook.NotebookDTO, MeterReaderCMS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Type Map configuration:
+Notebook -> NotebookDTO
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Notebook.NotebookDTO
+
+Destination Member:
+TrackNotebooks
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Type Map configuration:
+TrackNotebook -> TrackNotebookDTO
+MeterReaderCMS.Models.Entities.TrackNotebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO
+
+Destination Member:
+Notebook
+ ---> AutoMapper.AutoMapperConfigurationException: 
+Unmapped members were found. Review the types and members below.
+Add a custom mapping expression, ignore, add a custom resolver, or modify the source/destination type
+For no matching constructor, add a no-arg ctor, add optional arguments, or map all of the constructor parameters
+============================================================================================
+AutoMapper created this type map for you, but your types cannot be mapped using the current configuration.
+Notebook -> TrackNotebookDTO (Destination member list)
+MeterReaderCMS.Models.Entities.Notebook -> MeterReaderCMS.Models.DTO.Track.TrackNotebookDTO (Destination member list)
+
+Unmapped properties:
+Track
+Notebook
+Desc
+
+   at AutoMapper.ConfigurationValidator.AssertConfigurationIsValid(IEnumerable`1 typeMaps) in C:\projects\automapper\src\AutoMapper\ConfigurationValidator.cs:line 28
+   at AutoMapper.MapperConfiguration.AssertConfigurationIsValid(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\MapperConfiguration.cs:line 281
+   at AutoMapper.ResolutionContext.ValidateMap(TypeMap typeMap) in C:\projects\automapper\src\AutoMapper\ResolutionContext.cs:line 120
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   --- End of inner exception stack trace ---
+   at lambda_method(Closure , List`1 , List`1 , ResolutionContext )
+   at lambda_method(Closure , Object , Object , ResolutionContext )
+   at AutoMapper.Mapper.AutoMapper.IMapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 211
+   at AutoMapper.Mapper.Map[TDestination](Object source) in C:\projects\automapper\src\AutoMapper\Mapper.cs:line 76
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 64
+2023-09-06 21:06:30.1777|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-09-06 21:09:45.9737|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data

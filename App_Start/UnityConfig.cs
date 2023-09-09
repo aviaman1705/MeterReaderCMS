@@ -18,6 +18,8 @@ namespace MeterReaderCMS
             container.RegisterType<IUserRepository, UserRepository>();            
             container.RegisterType<ISearchRepository, SearchRepository>();
             container.RegisterType<ITrackRepository, TrackRepository>();
+            container.RegisterType<IStreetRepository, StreetRepository>();
+            container.RegisterType<INotebookRepository, NotebookRepository>();
             DependencyResolver.SetResolver(new Unity.Mvc5.UnityDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new Unity.WebApi.UnityDependencyResolver(container);
         }
