@@ -19,7 +19,7 @@ namespace MeterReaderCMS.Controllers.api
 
         public TracksController(Logger logger, ITrackRepository trackRepository)
         {
-            _trackRepository = trackRepository;            
+            _trackRepository = trackRepository;
         }
 
         [CacheFilter(TimeDuration = 100)]
@@ -49,7 +49,8 @@ namespace MeterReaderCMS.Controllers.api
                            .Where(m => m.Called.ToString().Contains(sSearch)
                            || m.Date.ToString("dd/MM/yyyy").Contains(sSearch)
                            || m.Desc.Contains(sSearch)
-                           || m.UnCalled.ToString().Contains(sSearch)).ToList();
+                           || m.UnCalled.ToString().Contains(sSearch)
+                           || m.NotebookNumber.ToString().Contains(sSearch)).ToList();
 
                     MemoryCacher.Add(Constant.TrackList, filterdTracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
 
@@ -61,10 +62,12 @@ namespace MeterReaderCMS.Controllers.api
                     if (MemoryCacher.GetValue(Constant.TrackList) != null)
                     {
                         tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);
+                        //tracks = tracks.Where(x => x.Date.Year == 2023 && x.Date.Month == 4).OrderBy(x => x.Date).ToList();
                     }
                     else
                     {
                         tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList());
+                        //tracks = tracks.Where(x => x.Date.Year == 2023 && x.Date.Month == 4).OrderBy(x => x.Date).ToList();
                         MemoryCacher.Add(Constant.TrackList, tracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
                     }
 
@@ -131,6 +134,6 @@ namespace MeterReaderCMS.Controllers.api
             }
 
             return list;
-        }        
+        }
     }
 }

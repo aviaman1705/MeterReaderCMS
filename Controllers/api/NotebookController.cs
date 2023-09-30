@@ -78,7 +78,7 @@ namespace MeterReaderCMS.Controllers.api
                 logger.Error($"GetData() {DateTime.Now}");
                 logger.Error(ex);
                 logger.Error("==============================");
-                return InternalServerError(ex);
+                return BadRequest(ex.Message);
             }
         }
 

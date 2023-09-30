@@ -1,0 +1,4 @@
+2023-09-10 20:00:00.5615|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-09-10 20:00:00.6150|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-09-10 20:00:00.6150|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 10-Sep-23 8:00:00 PM
+2023-09-10 20:00:05.8158|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
