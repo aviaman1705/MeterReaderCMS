@@ -30,46 +30,29 @@ namespace MeterReaderCMS.Controllers.api
             {
                 int iSortCol = Convert.ToInt32(iSortCol_0);
                 string sortOrder = sSortDir_0;
-                var Count = 0;
+                var count = 0;
 
-                var Notebooks = new List<NotebookDTO>();
+                var notebooks = new List<NotebookDTO>();
 
-                if (!string.IsNullOrEmpty(sSearch))
+                if (MemoryCacher.GetValue(Constant.NotebookList) != null)
                 {
-                    if (MemoryCacher.GetValue(Constant.NotebookList) != null)
-                    {
-                        Notebooks = (List<NotebookDTO>)MemoryCacher.GetValue(Constant.NotebookList);
-                    }
-                    else
-                    {
-                        Notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll()).ToList();
-                    }
-
-                    var filterdNotebooks = Notebooks
-                           .Where(m => m.Number.ToString().Contains(sSearch)).ToList();
-
-                    MemoryCacher.Add(Constant.NotebookList, filterdNotebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
-
-                    Count = filterdNotebooks.Count();
-                    Notebooks = SortFunction(iSortCol, sortOrder, filterdNotebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
+                    notebooks = (List<NotebookDTO>)MemoryCacher.GetValue(Constant.NotebookList);
                 }
                 else
                 {
-                    if (MemoryCacher.GetValue(Constant.TrackList) != null)
-                    {
-                        Notebooks = (List<NotebookDTO>)MemoryCacher.GetValue(Constant.NotebookList);
-                    }
-                    else
-                    {
-                        Notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().ToList());
-                        MemoryCacher.Add(Constant.NotebookList, Notebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
-                    }
-
-                    Count = Notebooks.Count();
-                    Notebooks = SortFunction(iSortCol, sortOrder, Notebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
+                    notebooks = Mapper.Map<List<NotebookDTO>>(_notebookRepository.GetAll().ToList()).ToList();
                 }
 
-                var NotebooksPaged = new SysDataTablePager<NotebookDTO>(Notebooks, Count, Count, sEcho);
+                if (!string.IsNullOrEmpty(sSearch))
+                {
+                    notebooks = notebooks.Where(m => m.Number.ToString().Contains(sSearch)).ToList();
+                }
+
+                MemoryCacher.Add(Constant.NotebookList, notebooks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
+                count = notebooks.Count();
+                notebooks = SortFunction(iSortCol, sortOrder, notebooks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
+
+                var NotebooksPaged = new SysDataTablePager<NotebookDTO>(notebooks, count, count, sEcho);
 
                 return Ok(NotebooksPaged);
             }

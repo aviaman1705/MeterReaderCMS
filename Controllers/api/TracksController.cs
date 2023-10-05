@@ -30,50 +30,40 @@ namespace MeterReaderCMS.Controllers.api
                 var res = _trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList();
                 int iSortCol = Convert.ToInt32(iSortCol_0);
                 string sortOrder = sSortDir_0;
-                var Count = 0;
+                var count = 0;
 
                 var tracks = new List<TrackListItemDTO>();
 
+                if (MemoryCacher.GetValue(Constant.TrackList) != null)
+                {
+                    tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);
+                }
+                else
+                {
+                    tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList());
+                    MemoryCacher.Add(Constant.TrackList, tracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
+                }
+
                 if (!string.IsNullOrEmpty(sSearch))
                 {
-                    if (MemoryCacher.GetValue(Constant.TrackList) != null)
-                    {
-                        tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);
-                    }
-                    else
-                    {
-                        tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name)).ToList();
-                    }
-
-                    var filterdTracks = tracks
+                   tracks = tracks
                            .Where(m => m.Called.ToString().Contains(sSearch)
                            || m.Date.ToString("dd/MM/yyyy").Contains(sSearch)
                            || m.Desc.Contains(sSearch)
                            || m.UnCalled.ToString().Contains(sSearch)
                            || m.NotebookNumber.ToString().Contains(sSearch)).ToList();
-
-                    MemoryCacher.Add(Constant.TrackList, filterdTracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
-
-                    Count = filterdTracks.Count();
-                    tracks = SortFunction(iSortCol, sortOrder, filterdTracks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
                 }
                 else
-                {
-                    if (MemoryCacher.GetValue(Constant.TrackList) != null)
-                    {
-                        tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);                        
-                    }
-                    else
-                    {
-                        tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList());                        
-                        MemoryCacher.Add(Constant.TrackList, tracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
-                    }
-
-                    Count = tracks.Count();
+                {                   
+                    count = tracks.Count();
                     tracks = SortFunction(iSortCol, sortOrder, tracks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
                 }
 
-                var tracksPaged = new SysDataTablePager<TrackListItemDTO>(tracks, Count, Count, sEcho);
+                MemoryCacher.Add(Constant.TrackList, tracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
+                count = tracks.Count();
+                tracks = SortFunction(iSortCol, sortOrder, tracks).Skip(iDisplayStart).Take(iDisplayLength).ToList();
+
+                var tracksPaged = new SysDataTablePager<TrackListItemDTO>(tracks, count, count, sEcho);
 
                 return Ok(tracksPaged);
             }
