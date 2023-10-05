@@ -61,13 +61,11 @@ namespace MeterReaderCMS.Controllers.api
                 {
                     if (MemoryCacher.GetValue(Constant.TrackList) != null)
                     {
-                        tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);
-                        //tracks = tracks.Where(x => x.Date.Year == 2023 && x.Date.Month == 4).OrderBy(x => x.Date).ToList();
+                        tracks = (List<TrackListItemDTO>)MemoryCacher.GetValue(Constant.TrackList);                        
                     }
                     else
                     {
-                        tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList());
-                        //tracks = tracks.Where(x => x.Date.Year == 2023 && x.Date.Month == 4).OrderBy(x => x.Date).ToList();
+                        tracks = Mapper.Map<List<TrackListItemDTO>>(_trackRepository.GetAll().Where(x => x.User.Username == User.Identity.Name).ToList());                        
                         MemoryCacher.Add(Constant.TrackList, tracks, DateTimeOffset.Now.AddMinutes(Constant.CacheTime));
                     }
 

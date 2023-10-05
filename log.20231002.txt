@@ -1,0 +1,50 @@
+2023-10-02 13:57:54.9365|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-10-02 13:57:54.9626|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-10-02 13:57:54.9626|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 02-Oct-23 1:57:54 PM
+2023-10-02 13:57:55.7240|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 14:00:59.4377|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 14:01:20.2270|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 14:02:08.9273|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 14:04:44.9942|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 02-Oct-23 2:04:44 PM
+2023-10-02 14:04:44.9942|ERROR|MeterReaderCMS.Controllers.api.NotebookController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 68
+2023-10-02 14:04:45.0311|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-10-02 14:04:49.9959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 02-Oct-23 2:04:49 PM
+2023-10-02 14:04:49.9959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 68
+2023-10-02 14:04:49.9959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-10-02 14:10:06.1996|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 02-Oct-23 2:10:06 PM
+2023-10-02 14:10:06.2704|ERROR|MeterReaderCMS.Controllers.api.NotebookController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 68
+2023-10-02 14:10:06.3151|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-10-02 14:10:08.4017|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 02-Oct-23 2:10:08 PM
+2023-10-02 14:10:08.4017|ERROR|MeterReaderCMS.Controllers.api.NotebookController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 68
+2023-10-02 14:10:08.4017|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-10-02 14:33:35.5959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|GetData() 02-Oct-23 2:33:35 PM
+2023-10-02 14:33:35.5959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at MeterReaderCMS.Controllers.api.NotebookController.GetData(String sEcho, String sSearch, Int32 iDisplayStart, Int32 iDisplayLength, String iSortCol_0, String sSortDir_0) in E:\projects\.NET\MeterReaderCMS\MeterReaderCMS\Controllers\api\NotebookController.cs:line 68
+2023-10-02 14:33:35.5959|ERROR|MeterReaderCMS.Controllers.api.NotebookController|==============================
+2023-10-02 15:37:35.7908|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-10-02 15:37:35.8379|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-10-02 15:37:35.8379|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 02-Oct-23 3:37:35 PM
+2023-10-02 15:37:36.5668|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 16:34:05.1390|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-10-02 16:34:05.1843|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-10-02 16:34:05.1843|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 02-Oct-23 4:34:05 PM
+2023-10-02 16:34:09.7390|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 19:23:50.2943|INFO|MeterReaderCMS.Controllers.AccountController|Login
+2023-10-02 19:23:50.3163|DEBUG|MeterReaderCMS.Controllers.AccountController|Login Debug
+2023-10-02 19:23:50.3163|ERROR|MeterReaderCMS.Controllers.AccountController|Login() 02-Oct-23 7:23:50 PM
+2023-10-02 19:23:50.8967|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
+2023-10-02 20:16:54.3395|INFO|MeterReaderCMS.Controllers.api.HomeController|GetDashboardData: Retrive dashboard data
